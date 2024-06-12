@@ -10,51 +10,107 @@ const MENU_LIST = [
   { text: "Register", href: "/register" },
 ];
 
+const LOGGED_IN_MENU_LIST = [
+  { text: "Home", href: "/" },
+  { text: "Community", href: "/community" },
+  { text: "Events", href: "/events" },
+  { text: "Business", href: "/business" },
+  { text: "Services", href: "/services" },
+  { text: "Logout", href: "/logout" },
+];
+
 const Navbar = () => {
+  const [isLogin, setIsLogin] = useState(true);
   const [navActive, setNavActive] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
     <header className="w-full sticky">
-      <nav className="bg-gray-800 w-full text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16 justify-between">
-            <div className="flex items-center ">
+      <nav className="bg-gray-800 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center h-16 justify-between w-full">
+            <div className="flex items-center w-full">
               <div className="flex-shrink-0">
                 <Link legacyBehavior href="/">
                   <a className="text-white font-bold text-xl">CommUnity</a>
                 </Link>
               </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4 justify-around">
-                  {MENU_LIST.slice(0, 3).map((menu, idx) => (
-                    <div
-                      onClick={() => {
-                        setActiveIdx(idx);
-                        setNavActive(false);
-                      }}
-                      key={menu.text}
-                      className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
-                    >
-                      <Navlink active={activeIdx === idx} {...menu} />
-                    </div>
-                  ))}
-                  {MENU_LIST.slice(3, 5).map((menu, idx) => (
-                    <div
-                      onClick={() => {
-                        setActiveIdx(idx);
-                        setNavActive(false);
-                      }}
-                      key={menu.text}
-                      className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
-                    >
-                      <Navlink active={activeIdx === idx} {...menu} />
-                    </div>
-                  ))}
-                </div>
+              <div className="hidden md:flex justify-between w-full">
+                {isLogin ? (
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    {LOGGED_IN_MENU_LIST.slice(0, 5).map((menu, idx) => (
+                      <div
+                        onClick={() => {
+                          setActiveIdx(idx);
+                          setNavActive(false);
+                        }}
+                        key={menu.text}
+                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                      >
+                        <Navlink active={activeIdx === idx} {...menu} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    {MENU_LIST.slice(0, 3).map((menu, idx) => (
+                      <div
+                        onClick={() => {
+                          setActiveIdx(idx);
+                          setNavActive(false);
+                        }}
+                        key={menu.text}
+                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                      >
+                        <Navlink active={activeIdx === idx} {...menu} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {isLogin ? (
+                  <div className="ml-10 flex items-basline space-x-4">
+                    {LOGGED_IN_MENU_LIST.slice(5, 6).map((menu, idx) => (
+                      <div
+                        onClick={() => {
+                          setActiveIdx(idx);
+                          setNavActive(false);
+                        }}
+                        key={menu.text}
+                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                      >
+                        <Navlink active={activeIdx === idx} {...menu} />
+                      </div>
+                    ))}
+                    <img
+                      src="profile.webp"
+                      alt=""
+                      className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
+                    />
+                  </div>
+                ) : (
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    {MENU_LIST.slice(3, 5).map((menu, idx) => (
+                      <div
+                        onClick={() => {
+                          setActiveIdx(idx);
+                          setNavActive(false);
+                        }}
+                        key={menu.text}
+                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                      >
+                        <Navlink active={activeIdx === idx} {...menu} />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-            <div className="-mr-2 flex md:hidden">
+            <div className="mr-8 flex md:hidden gap-5">
+              <img
+                src="profile.webp"
+                alt=""
+                className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
+              />
               <button
                 onClick={() => setNavActive(!navActive)}
                 type="button"
@@ -100,24 +156,43 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
         <div
           className={`${navActive ? "block" : "hidden"} md:hidden`}
           id="mobile-menu"
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {MENU_LIST.slice(0, 3).map((menu, idx) => (
-              <div
-                onClick={() => {
-                  setActiveIdx(idx);
-                  setNavActive(false);
-                }}
-                key={menu.text}
-                className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
-              >
-                <Navlink active={activeIdx === idx} {...menu} />
-              </div>
-            ))}
-          </div>
+          {isLogin ? (
+            <div className="px-2 pb-3 space-y-1 sm:px-3">
+              {LOGGED_IN_MENU_LIST.map((menu, idx) => (
+                <div
+                  onClick={() => {
+                    setActiveIdx(idx);
+                    setNavActive(false);
+                  }}
+                  key={menu.text}
+                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                >
+                  <Navlink active={activeIdx === idx} {...menu} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="px-2 pb-3 space-y-1 sm:px-3">
+              {MENU_LIST.map((menu, idx) => (
+                <div
+                  onClick={() => {
+                    setActiveIdx(idx);
+                    setNavActive(false);
+                  }}
+                  key={menu.text}
+                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                >
+                  <Navlink active={activeIdx === idx} {...menu} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </nav>
     </header>
