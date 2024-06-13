@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React from 'react'
 
-const Login = () => {
+const SignUp = () => {
   return (
       <div className='h-screen w-screen flex justify-center items-center bg-gray-800'>
         <div className='sm:shadow-xl p-8 bg-white rounded-xl w-96'>
 
-            <h1 className='font-semibold text-2xl mb-5'>Sign In</h1>
+            <h1 className='font-semibold text-2xl mb-5'>Make An Account</h1>
 
             <form action="#">
 
@@ -16,7 +16,12 @@ const Login = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="password" className='block mb-2 text-sm font-medium text-gray-800'>Your password:</label>
+                    <label htmlFor="password" className='block mb-2 text-sm font-medium text-gray-800'>Password:</label>
+                    <input type="password" name="password" id="password" className='mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full' placeholder="••••••••" required={true}/>
+                </div>
+
+                <div>
+                    <label htmlFor="password" className='block mb-2 text-sm font-medium text-gray-800'>Confirm Password:</label>
                     <input type="password" name="password" id="password" className='mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full' placeholder="••••••••" required={true}/>
                 </div>
 
@@ -29,17 +34,9 @@ const Login = () => {
                             <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
                         </div>
                     </div>
-
-                    <a href="#" className=" flex text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
                 </div>
 
-                
-
-                <button type="submit" className="mt-5 w-full text-white bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800">Sign in</button>
-                  
-                <p className="text-sm text-center font-light text-gray-600 mt-5 w-full">
-                    Don't have an account yet? <a href="#" className="font-medium text-gray-800 hover:underline dark:text-primary-500">Sign up</a>
-                </p>
+                <button type="submit" className="mt-5 w-full text-white bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800">Sign Up</button>
 
             </form>
         </div>
@@ -47,4 +44,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default SignUp;
