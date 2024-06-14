@@ -3,7 +3,7 @@ import React from 'react'
 
 const SignUp = () => {
   return (
-      <div className='h-screen w-screen flex justify-center items-center bg-gray-800'>
+      <div className='h-screen w-screen flex justify-center items-center'>
         <div className='sm:shadow-xl p-8 bg-white rounded-xl w-96'>
 
             <h1 className='font-semibold text-2xl mb-5'>Make An Account</h1>
