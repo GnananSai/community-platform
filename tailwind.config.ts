@@ -17,4 +17,6 @@ const config: Config = {
   },
   plugins: [],
 };
-export default config;
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+export default withMT(config);
