@@ -11,7 +11,7 @@ const MENU_LIST = [
 ];
 
 const LOGGED_IN_MENU_LIST = [
-  { text: "Home", href: "/" },
+  { text: "Home", href: "/home" },
   { text: "Community", href: "/community" },
   { text: "Events", href: "/events" },
   { text: "Business", href: "/business" },
@@ -25,8 +25,8 @@ const Navbar = () => {
   const [activeIdx, setActiveIdx] = useState(-1);
 
   return (
-    <header className="w-full sticky">
-      <nav className="bg-gray-800 w-full">
+    <header className="w-full">
+      <nav className="bg-blue-gray-800 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex items-center h-16 justify-between w-full">
             <div className="flex items-center w-full">
@@ -50,6 +50,25 @@ const Navbar = () => {
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
                     ))}
+                    <div className="relative flex w-full gap-2 md:w-max items-center justify-between ">
+                      <input
+                        type="search"
+                        placeholder="Type Something..."
+                        className="pr-20 min-w-[288px] px-4 py-2 rounded-3xl"
+                      />
+                      <button className="!absolute right-1 px-">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 50 50"
+                        >
+                          <path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"></path>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <div className="ml-10 flex items-baseline space-x-4">
