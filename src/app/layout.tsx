@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-slate-300">{children}</body>
+      <body className="bg-slate-300 overflow-x-hidden">{children}</body>
     </html>
   );
 }
