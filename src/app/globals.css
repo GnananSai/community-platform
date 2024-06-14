@@ -4,4 +4,6 @@
 
 .body{
     background-color: rgb(207, 207, 17);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
