@@ -2,11 +2,18 @@
 
 import Image from "next/image";
 import Navbar1 from "../components/Navbar1";
+import Footer from "@/components/Footer";
+import Login from "@/components/Login";
+import SignUp from "@/components/SignUp";
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main>
       <Navbar1 />
+      <Login/>
+      <SignUp/>
+      <Footer/>
     </main>
   );
 }
