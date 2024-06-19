@@ -1,17 +1,17 @@
 import React from "react";
-import { events } from "@/app/constants/data";
-import EventCard from "./EventCard";
+import { communities } from "@/app/constants/data";
+import CommunityCard from "./CommunityCard";
 
-const EventFeed = () => {
+const CommunityFeed = () => {
   return (
     <section className="flex flex-wrap flex-col items-center justify-center gap-5 md:gap-10 rounded-2xl col-span-1 md:col-span-6 w-full p-8">
       <article className="flex justify-between items-center w-full ">
-        <h1 className="text-2xl font-bold md:text-4xl ">Top Events</h1>
+        <h1 className="text-2xl font-bold md:text-4xl ">Top Communities</h1>
         <a
           href="#"
           className="flex items-center justify-center rounded-lg bg-primary-700 bg-blue-gray-800 text-white hover:bg-blue-gray-100 hover:text-black w-fit p-3 text-xs md:text-lg"
         >
-          More Events
+          More Communities
           <svg
             className="w-5 h-5 ml-2 -mr-1"
             fill="currentColor"
@@ -27,12 +27,12 @@ const EventFeed = () => {
         </a>
       </article>
       <article className="flex flex-col gap-5 sm:w-11/12 h-fit justify-center items-center">
-        {events.map((event) => (
-          <EventCard key={event.id} data={event} />
+        {communities.map((community) => (
+          <CommunityCard key={community.id} data={community} />
         ))}
       </article>
     </section>
   );
 };
 
-export default EventFeed;
+export default CommunityFeed;

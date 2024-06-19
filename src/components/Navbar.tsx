@@ -16,7 +16,7 @@ const LOGGED_IN_MENU_LIST = [
   { text: "Events", href: "/events" },
   { text: "Business", href: "/business" },
   { text: "Services", href: "/services" },
-  { text: "Logout", href: "/logout" },
+  { text: "Logout", href: "/login" },
 ];
 
 const Navbar = () => {
@@ -28,8 +28,8 @@ const Navbar = () => {
     <header className="w-full">
       <nav className="bg-blue-gray-800 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex items-center h-16 justify-between w-full">
-            <div className="flex items-center w-full">
+          <div className="flex items-center h-16 justify-between">
+            <div className="flex items-center w-full justify-between">
               <div className="flex-shrink-0">
                 <Link legacyBehavior href="/">
                   <a className="text-white font-bold text-xl">CommUnity</a>
@@ -45,7 +45,7 @@ const Navbar = () => {
                           setNavActive(false);
                         }}
                         key={menu.text}
-                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                        className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                       >
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
@@ -56,7 +56,7 @@ const Navbar = () => {
                         placeholder="Type Something..."
                         className="pr-20 min-w-[288px] px-4 py-2 rounded-3xl"
                       />
-                      <button className="!absolute right-1 px-">
+                      <button className="!absolute right-1 px-3">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           x="0px"
@@ -79,7 +79,7 @@ const Navbar = () => {
                           setNavActive(false);
                         }}
                         key={menu.text}
-                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                        className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                       >
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
                           setNavActive(false);
                         }}
                         key={menu.text}
-                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                        className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                       >
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
@@ -115,7 +115,7 @@ const Navbar = () => {
                           setNavActive(false);
                         }}
                         key={menu.text}
-                        className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                        className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                       >
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
@@ -124,16 +124,20 @@ const Navbar = () => {
                 )}
               </div>
             </div>
-            <div className="mr-8 flex md:hidden gap-5">
-              <img
-                src="profile.webp"
-                alt=""
-                className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
-              />
+            <div className="flex md:hidden gap-5 w-full justify-end">
+              {isLogin ? (
+                <img
+                  src="profile.webp"
+                  alt=""
+                  className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
+                />
+              ) : (
+                <></>
+              )}
               <button
                 onClick={() => setNavActive(!navActive)}
                 type="button"
-                className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
@@ -190,7 +194,7 @@ const Navbar = () => {
                     setNavActive(false);
                   }}
                   key={menu.text}
-                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                  className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                 >
                   <Navlink active={activeIdx === idx} {...menu} />
                 </div>
@@ -205,7 +209,7 @@ const Navbar = () => {
                     setNavActive(false);
                   }}
                   key={menu.text}
-                  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-base"
+                  className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
                 >
                   <Navlink active={activeIdx === idx} {...menu} />
                 </div>

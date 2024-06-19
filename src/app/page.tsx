@@ -9,14 +9,13 @@ import LandingCarousel from "@/components/LandingCarousel";
 import LandingHero from "@/components/LandingHero";
 import LandingContents from "@/components/LandingContents";
 
-
 export default function Home() {
   return (
     <main>
-      <div className="h-4/5">
-      <LandingHero/>
-      <LandingCarousel/>
-      <LandingContents/>
+      <div className="h-4/5 flex flex-col justify-center items-center">
+        <LandingHero />
+        <LandingCarousel />
+        <LandingContents />
       </div>
     </main>
   );
