@@ -39,3 +39,4 @@ const EventCard = ({ data }: CommunityCardProps) => {
 };
 
 export default EventCard;
+

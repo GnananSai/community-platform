@@ -1,18 +1,17 @@
 export function Footer() {
   return (
-    <footer className="w-full bg-gray-800 p-8 text-white relative bottom-0 left-0 right-0 md:px-64">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-y-6  bg-gray-800 text-center md:justify-between">
-        <div className="flex flex-row flex-wrap items-center justify-center gap-x-5">
+    <footer className="w-full bg-blue-gray-800 p-8 text-white relative bottom-0 left-0 right-0 lg:px-64">
+      <div className="flex flex-row flex-wrap items-center gap-y-6  bg-blue-gray-800 text-center justify-center lg:justify-between gap-5">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-x-5 w-full lg:w-fit">
           <img src="/logo-dummy.png" alt="logo-ct" className="w-10" />
           <a className="font-bold text-lg">CommUnity</a>
         </div>
-
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+        <ul className="flex flex-wrap items-center gap-y-2 md:gap-x-8 justify-center w-full lg:w-fit">
           <li>
             <a
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               License
             </a>
@@ -21,7 +20,7 @@ export function Footer() {
             <a
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               Contribute
             </a>
@@ -30,15 +29,15 @@ export function Footer() {
             <a
               href="#"
               color="blue-gray"
-              className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
+              className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               Contact Us
             </a>
           </li>
         </ul>
       </div>
-      <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
-        <a className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0">
+      <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 lg:flex-row gap-3 lg:justify-between ">
+        <a className="mb-4 text-center font-normal text-white md:mb-0">
           &copy; 2024 CommUnity. All Rights Reserved.
         </a>
         <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
@@ -47,7 +46,7 @@ export function Footer() {
             className="opacity-80 transition-opacity hover:opacity-100"
           >
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -64,7 +63,7 @@ export function Footer() {
             className="opacity-80 transition-opacity hover:opacity-100"
           >
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -81,7 +80,7 @@ export function Footer() {
             className="opacity-80 transition-opacity hover:opacity-100"
           >
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -94,7 +93,7 @@ export function Footer() {
             className="opacity-80 transition-opacity hover:opacity-100"
           >
             <svg
-              className="h-5 w-5"
+              className="h-5 w-5 text-white"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
