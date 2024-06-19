@@ -14,7 +14,7 @@ const CommunityCard = ({ data }: CommunityCardProps) => {
         <img
           src={data.img}
           alt="card-image"
-          className="w-fit h-full sm:w-full sm:h-full rounded-lg"
+          className="w-fit h-full sm:w-full sm:h-full rounded-lg object-cover"
         />
       </article>
       <article>
