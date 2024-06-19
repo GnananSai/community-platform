@@ -12,7 +12,7 @@ import LandingContents from "@/components/LandingContents";
 export default function Home() {
   return (
     <main>
-      <div className="h-4/5">
+      <div className="h-4/5 flex flex-col justify-center items-center">
         <LandingHero />
         <LandingCarousel />
         <LandingContents />

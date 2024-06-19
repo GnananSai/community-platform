@@ -1,4 +1,4 @@
-export const data = [
+export const events = [
     {
         id: 1,
         title: "Event 1",
@@ -22,20 +22,29 @@ export const data = [
         img: "event-pic.webp"  
 
     },
+]
+export const communities = [
     {
-        id: 4,
-        title: "Event 4",
-        description: "This is the fourth event",
-        date: "2022-04-04",  
-        img: "event-pic.webp"  
+        id: 1,
+        title: "Community 1",
+        description: "This is the first community",
+        img: "community-pic.jpg",
+        members: 100
+    },
+    {
+        id: 2,
+        title: "Community 2",
+        description: "This is the second community",
+        img: "community-pic.jpg",
+        members: 100
 
     },
     {
-        id: 5,
-        title: "Event 5",
-        description: "This is the fifth event",
-        date: "2022-05-05",
-        img: "event-pic.webp"  
+        id: 3,
+        title: "Community 3",
+        description: "This is the third community",
+        img: "community-pic.jpg",
+        members: 100
 
-    }
+    },
 ]
