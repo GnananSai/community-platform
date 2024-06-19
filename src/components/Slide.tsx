@@ -10,7 +10,7 @@ const Slide: React.FC<propsType> = ({ img }) => {
     <div className="flex justify-center items-center">
       <div className="outline-none border-none relative md:w-[70%] flex justify-center items-center">
         <Image
-          className="w-fit md:w-full h-[300px] md:h-auto rounded-xl object-cover"
+          className="w-fit md:w-full h-[300px] md:h-auto rounded-xl object-fit"
           src={img}
           alt="banner"
           width={1000}
