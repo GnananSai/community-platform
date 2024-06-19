@@ -72,8 +72,8 @@ const Login = () => {
 
           <button
             type="submit"
-            href="/home"
-            className="mt-5 w-full text-white bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
+            // href="/home"
+            className="mt-5 w-full text-white bg-blue-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
           >
             Sign in
           </button>
@@ -81,7 +81,7 @@ const Login = () => {
           <p className="text-sm text-center font-light text-gray-600 mt-5 w-full">
             Don't have an account yet?{" "}
             <a
-              href="#"
+              href="/register"
               className="font-medium text-gray-800 hover:underline dark:text-primary-500"
             >
               Sign up

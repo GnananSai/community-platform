@@ -82,7 +82,7 @@ const SignUp = () => {
 
           <button
             type="submit"
-            className="mt-5 w-full text-white bg-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
+            className="mt-5 w-full text-white bg-blue-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
           >
             Sign Up
           </button>
