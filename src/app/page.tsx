@@ -5,13 +5,18 @@ import Navbar1 from "../components/Navbar";
 import Footer from "@/components/Footer";
 import Login from "@/components/Login";
 import SignUp from "@/components/SignUp";
+import LandingCarousel from "@/components/LandingCarousel";
+import LandingHero from "@/components/LandingHero";
+import LandingContents from "@/components/LandingContents";
 
 
 export default function Home() {
   return (
     <main>
       <div className="h-4/5">
-        Landing page
+      <LandingHero/>
+      <LandingCarousel/>
+      <LandingContents/>
       </div>
     </main>
   );
