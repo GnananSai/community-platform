@@ -12,7 +12,13 @@ const BusinessHero = () => {
             <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl ">
               Make some money or buy what you need, all in the comfort of your locality
             </p>
-            <div className="flex gap-5">
+            <div className="flex gap-5 md:hidden">
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
+                >
+                  Buy an item
+                </a>
                 <a
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
