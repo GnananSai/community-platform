@@ -1,13 +1,12 @@
 import React from "react";
 import EventFeed from "@/components/EventFeed";
 import CommunityFeed from "@/components/CommunityFeed";
-import LandingCarousel from "@/components/LandingCarousel";
 import HomeHero from "@/components/HomeHero";
+
 const page = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
       <HomeHero />
-      <LandingCarousel />
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
         <EventFeed />
         <CommunityFeed />
