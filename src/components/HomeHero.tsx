@@ -1,6 +1,6 @@
 import React from "react";
 
-const LandingHero = () => {
+const HomeHero = () => {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
@@ -55,4 +55,4 @@ const LandingHero = () => {
   );
 };
 
-export default LandingHero;
+export default HomeHero;

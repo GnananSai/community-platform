@@ -2,7 +2,7 @@ import React from "react";
 import EventFeed from "@/components/EventFeed";
 import CommunityFeed from "@/components/CommunityFeed";
 import HomeHero from "@/components/HomeHero";
-import LandingCarousel from "@/components/LandingCarousel";
+
 const page = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
