@@ -48,3 +48,21 @@ export const communities = [
 
     },
 ]
+export const businessItems = [
+    {
+        id: 1,
+        description: "This is the first item",
+        img: "community-pic.jpg",
+    },
+    {
+        id: 2,
+        description: "This is the second item", 
+        img: "community-pic.jpg",
+
+    },
+    {
+        id: 3,
+        description: "This is the third item",
+        img: "community-pic.jpg",
+    },
+]
