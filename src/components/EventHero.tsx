@@ -1,6 +1,11 @@
-import React from "react";
+"use client"
 
-const EventHero = () => {
+import React from "react";
+interface EventHeroProps {
+  scrollToEventCreate: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}
+
+const EventHero: React.FC<EventHeroProps> = ({scrollToEventCreate}) => {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
@@ -9,17 +14,24 @@ const EventHero = () => {
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-gray-800">
               Join the local event hub or create one yourself
             </h1>
-            <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl ">
+            <div className="md:hidden text-center">
+              <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl ">
+                  Find events that catch your eye or create one for everyone interested
+              </p>
+            </div>
+            <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl md:block hidden">
                 Find events that catch your eye or create one for everyone interested
             </p>
-            <div className="flex gap-5 md:hidden">
+            <div className="flex gap-5 md:hidden justify-center items-center">
                 <a
+                  onClick={scrollToEventCreate}
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   Join an event
                 </a>
                 <a
+                  onClick={scrollToEventCreate}
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
