@@ -2,7 +2,7 @@ import React from 'react';
 
 const CommunitySearch = () => {
   return (
-    <div className="w-full max-w-md mx-auto mb-10">
+    <div className="w-full max-w-md mx-auto mb-10"> 
       <div className="flex items-center justify-center">
         <div className="w-full flex flex-col gap-1 p-2 border shadow-lg rounded-xl bg-white border-t-4 border-t-blue-gray-800">
           <div className="flex sm:px-4 mt-2 justify-between">
