@@ -15,25 +15,25 @@ const HomeHero = () => {
             </p>
             <div className="flex gap-5">
                 <a
-                  href="#"
+                  href="/community"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   What's New?
                 </a>
                 <a
-                  href="#"
+                  href="/events"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   Discover Events
                 </a>
                 <a
-                  href="#"
+                  href="/business"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   Buy/Sell
                 </a>
                 <a
-                  href="#"
+                  href="/services"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   Avail Services

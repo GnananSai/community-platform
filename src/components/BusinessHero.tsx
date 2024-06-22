@@ -1,6 +1,11 @@
-import React from "react";
+"use client"
 
-const BusinessHero = () => {
+import React from "react";
+interface BusinessHeroProps {
+  scrollToBusinessSell: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}
+
+const BusinessHero: React.FC<BusinessHeroProps> = ({scrollToBusinessSell}) => {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
@@ -9,17 +14,24 @@ const BusinessHero = () => {
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-gray-800">
               Buy & sell what you want
             </h1>
-            <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl ">
+            <div className="md:hidden text-center">
+              <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl ">
+                Make some money or buy what you need, all in the comfort of your locality
+              </p>
+            </div>
+            <p className="max-w-2xl font-light text-gray-500 mb-4 lg:mb-8 md:text-lg lg:text-xl md:block hidden ">
               Make some money or buy what you need, all in the comfort of your locality
             </p>
-            <div className="flex gap-5 md:hidden">
+            <div className="flex gap-5 md:hidden justify-center items-center">
                 <a
+                  onClick={scrollToBusinessSell}
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
                   Buy an item
                 </a>
                 <a
+                  onClick={scrollToBusinessSell}
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                 >
