@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Navlink from "./Navlink";
 
 const MENU_LIST = [
@@ -16,13 +18,22 @@ const LOGGED_IN_MENU_LIST = [
   { text: "Events", href: "/events" },
   { text: "Business", href: "/business" },
   { text: "Services", href: "/services" },
-  { text: "Logout", href: "/login" },
 ];
 
-const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(true);
+interface NavbarProps {
+  isAuth: boolean;
+}
+
+const Navbar = ({ isAuth }: NavbarProps) => {
   const [navActive, setNavActive] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    router.refresh();
+    router.replace("/");
+  };
 
   return (
     <header className="w-full">
@@ -36,7 +47,7 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="hidden md:flex justify-between w-full">
-                {isLogin ? (
+                {isAuth ? (
                   <div className="ml-10 flex items-baseline space-x-4">
                     {LOGGED_IN_MENU_LIST.slice(0, 5).map((menu, idx) => (
                       <div
@@ -50,6 +61,21 @@ const Navbar = () => {
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
                     ))}
+                    <div
+                      onClick={() => {
+                        setActiveIdx(5);
+                        setNavActive(false);
+                        handleLogout();
+                      }}
+                      key={"Logout"}
+                      className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
+                    >
+                      <Navlink
+                        active={activeIdx === 5}
+                        text="Logout"
+                        href="/"
+                      />
+                    </div>
                     <div className="relative flex w-full gap-2 md:w-max items-center justify-between ">
                       <input
                         type="search"
@@ -86,7 +112,7 @@ const Navbar = () => {
                     ))}
                   </div>
                 )}
-                {isLogin ? (
+                {isAuth ? (
                   <div className="ml-10 flex items-basline space-x-4">
                     {LOGGED_IN_MENU_LIST.slice(5, 6).map((menu, idx) => (
                       <div
@@ -100,6 +126,21 @@ const Navbar = () => {
                         <Navlink active={activeIdx === idx} {...menu} />
                       </div>
                     ))}
+                    {/* <div
+                      onClick={() => {
+                        setActiveIdx(5);
+                        setNavActive(false);
+                        handleLogout();
+                      }}
+                      key={"Logout"}
+                      className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
+                    >
+                      <Navlink
+                        active={activeIdx === 5}
+                        text="Logout"
+                        href="/"
+                      />
+                    </div> */}
                     <img
                       src="profile.webp"
                       alt=""
@@ -125,7 +166,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="flex md:hidden gap-5 w-full justify-end">
-              {isLogin ? (
+              {isAuth ? (
                 <img
                   src="profile.webp"
                   alt=""
@@ -185,7 +226,7 @@ const Navbar = () => {
           className={`${navActive ? "block" : "hidden"} md:hidden`}
           id="mobile-menu"
         >
-          {isLogin ? (
+          {isAuth ? (
             <div className="px-2 pb-3 space-y-1 sm:px-3">
               {LOGGED_IN_MENU_LIST.map((menu, idx) => (
                 <div
@@ -199,6 +240,17 @@ const Navbar = () => {
                   <Navlink active={activeIdx === idx} {...menu} />
                 </div>
               ))}
+              <div
+                onClick={() => {
+                  setActiveIdx(5);
+                  setNavActive(false);
+                  handleLogout();
+                }}
+                key={"Logout"}
+                className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
+              >
+                <Navlink active={activeIdx === 5} text="Logout" href="/" />
+              </div>
             </div>
           ) : (
             <div className="px-2 pb-3 space-y-1 sm:px-3">
