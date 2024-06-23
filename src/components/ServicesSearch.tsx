@@ -1,19 +1,19 @@
 import React from 'react';
 
-const CommunitySearch = () => {
+const ServicesSearch = () => {
   return (
-    <div className="w-full max-w-md mx-auto mb-10"> 
+    <div className="w-full max-w-md mx-auto mb-10">
       <div className="flex items-center justify-center">
         <div className="w-full flex flex-col gap-1 p-2 border shadow-lg rounded-xl bg-white border-t-4 border-t-blue-gray-800">
           <div className="flex sm:px-4 mt-2 justify-between">
-            <h1 className="text-xl font-semibold text-gray-800">Join a Community</h1>
+            <h1 className="text-xl font-semibold text-gray-800">What service are you looking for?</h1>
           </div>
           <div className="flex items-center gap-2 pt-2">
             <img src="profile.webp" alt="User profile" className="w-[3.5rem] h-[3.5rem] rounded-full" />
             <input
               type="text"
               className="block w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
-              placeholder="Manipal, Sai Gardens, ..."
+              placeholder="House Cleaning? Electrician?"
             />
             <button
               type="button"
@@ -28,4 +28,4 @@ const CommunitySearch = () => {
   );
 };
 
-export default CommunitySearch;
+export default ServicesSearch;
