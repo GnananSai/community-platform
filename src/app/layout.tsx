@@ -1,10 +1,9 @@
 "use client";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { useAuth } from "@/utils/auth";
+import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -15,10 +14,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let isAuth = useAuth();
+  useEffect(() => {
+    isAuth = useAuth();
+  }, []);
+
   return (
     <html lang="en">
       <body className="bg-slate-300 overflow-x-hidden">
-        <Navbar />
+        <Navbar isAuth={isAuth} />
         {children}
         <Footer />
       </body>

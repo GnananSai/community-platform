@@ -1,11 +1,31 @@
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
-const Login = () => {
+interface LoginProps {
+  onLogin: (email: string, password: string) => void;
+}
+
+const initialLoginValue = {
+  email: "",
+  password: "",
+};
+
+const Login = ({ onLogin }: LoginProps) => {
+  const [login, setLogin] = useState(initialLoginValue);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(login);
+    onLogin(login.email, login.password);
+  };
+
   return (
     <div className="h-fit w-screen flex justify-center items-center py-36">
       <div className="sm:shadow-xl p-8 bg-white rounded-xl w-96">
-        <h1 className="font-semibold text-2xl mb-5">Sign In</h1>
+        <h1 className="font-semibold text-2xl mb-5">Login</h1>
 
         <form action="#">
           <div>
@@ -19,6 +39,7 @@ const Login = () => {
               type="email"
               name="email"
               id="email"
+              onChange={handleChange}
               className="mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full"
               placeholder="name@email.com"
               required={true}
@@ -36,6 +57,7 @@ const Login = () => {
               type="password"
               name="password"
               id="password"
+              onChange={handleChange}
               className="mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full"
               placeholder="••••••••"
               required={true}
@@ -72,10 +94,10 @@ const Login = () => {
 
           <button
             type="submit"
-            // href="/home"
+            onClick={handleSubmit}
             className="mt-5 w-full text-white bg-blue-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
           >
-            Sign in
+            Login
           </button>
 
           <p className="text-sm text-center font-light text-gray-600 mt-5 w-full">
