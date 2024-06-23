@@ -66,3 +66,21 @@ export const businessItems = [
         img: "community-pic.jpg",
     },
 ]
+export const servicesItems = [
+    {
+        id: 1,
+        description: "This is a service",
+        img: "Service Cleaning.jpg",
+    },
+    {
+        id: 2,
+        description: "This is a service", 
+        img: "Service Cleaning.jpg",
+
+    },
+    {
+        id: 3,
+        description: "This is a service",
+        img: "Service Cleaning.jpg",
+    },
+]
