@@ -1,12 +1,14 @@
 import React from "react";
-import { servicesItems} from "@/app/constants/data";
+import { servicesItems } from "@/app/constants/data";
 import ServicesCard from "./ServicesCard";
 
 const ServicesFeed = () => {
   return (
     <section className="flex flex-wrap flex-col items-center justify-center gap-5 md:gap-10 rounded-2xl col-span-1 md:col-span-6 w-full p-8">
       <article className="flex justify-between items-center w-full px-5">
-        <h1 className="text-2xl font-bold md:text-4xl text-gray-800">Latest Posts</h1>
+        <h1 className="text-2xl font-bold md:text-4xl text-gray-800">
+          Latest Posts
+        </h1>
         <a
           href="#"
           className="inline-flex items-center justify-center text-base px-2 font-small text-center text-gray-800 border border-gray-800 rounded-lg hover:bg-blue-gray-800 hover:text-white focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105 md:px-5 py-3 font-medium"

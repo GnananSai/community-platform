@@ -11,7 +11,9 @@
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
     "aos": "^2.3.4",
+    "bcrypt": "^5.1.1",
     "flatpickr": "^4.6.13",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.3",
     "next": "14.2.3",
@@ -26,6 +28,8 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
