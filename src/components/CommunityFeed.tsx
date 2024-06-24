@@ -1,12 +1,13 @@
 import React from "react";
-import { communities } from "@/app/constants/data";
+// import { communities } from "@/app/constants/data";
 import CommunityCard from "./CommunityCard";
+import { ICommunity } from "@/models/Community";
 
-interface props {
-  heading: string;
+interface ICommunityFeed {
+  communities: ICommunity[];
 }
 
-const CommunityFeed = (props: props) => {
+const CommunityFeed: React.FC<ICommunityFeed> = ({ communities }) => {
   return (
     <section className="flex flex-wrap flex-col items-center justify-center gap-5 md:gap-10 rounded-2xl col-span-1 md:col-span-6 w-full p-8">
       <article className="flex justify-between items-center w-full px-5 ">
