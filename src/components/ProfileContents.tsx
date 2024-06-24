@@ -7,10 +7,10 @@ const ProfileContents = () => {
             <div className="container mx-auto py-8">
                 <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
 
-                    <div className="col-span-4 sm:col-span-3">
+                    <div className="col-span-4 sm:col-span-5">
                         <div className="bg-white shadow rounded-lg p-6">
                             <div className="flex flex-col items-center">
-                                <img src="profile.webp" className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                                <img src="profile.webp" className="w-16 h-16 md:w-32 md:h-32 bg-gray-300 rounded-full mb-4 shrink-0">
 
                                 </img>
                                 <h1 className="text-xl font-bold">NAME</h1>
@@ -25,7 +25,7 @@ const ProfileContents = () => {
                         </div>
                     </div>
 
-                    <div className="col-span-4 sm:col-span-9">
+                    <div className="col-span-4 sm:col-span-7">
                         <div className="bg-white shadow rounded-lg p-6">
                             <h2 className="text-2xl font-bold mb-4 uppercase">About You</h2>
                             <p className="text-gray-800 text-lg">

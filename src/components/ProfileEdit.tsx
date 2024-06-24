@@ -3,7 +3,7 @@ import React from 'react';
 const ProfileEdit = () => {
   return (
     <div className="flex items-center justify-center m-5">
-      <div className="shadow-xl rounded-lg p-6 w-[40%] mx-auto items-center">
+      <div className="shadow-xl rounded-lg p-6 md:w-[40%] mx-auto items-center">
         <h1 className="text-4xl font-bold uppercase text-blue-gray-800 mb-6">Edit Your Profile</h1>
         <div className="flex flex-col items-center p-4">
           <h2 className="text-2xl pb-3 uppercase text-gray-800 font-semibold"> <u>Upload profile picture</u></h2>
@@ -47,42 +47,42 @@ const ProfileEdit = () => {
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter DOB</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="DD/MM/YYYY"
           />
 
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter Age</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="In years"
           />
 
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter Address</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Flat No., Street, Locality"
           />
 
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter City</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="City Name"
           />
 
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter State</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="State Name"
           />
 
           <h2 className="text-2xl pb-3 pt-3 uppercase text-gray-800 font-semibold"> <u>Enter Country</u></h2>
           <input
             type="text"
-            className="w-[50%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            className="w-[70%] block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Country Name"
           />
 
