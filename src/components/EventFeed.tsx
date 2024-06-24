@@ -1,8 +1,13 @@
 import React from "react";
-import { events } from "@/app/constants/data";
+// import { events } from "@/app/constants/data";
 import EventCard from "./EventCard";
+import { IEvent } from "@/models/Event";
 
-const EventFeed = () => {
+interface IEventFeed {
+  events: IEvent[];
+}
+
+const EventFeed: React.FC<IEventFeed> = ({ events }) => {
   return (
     <section className="flex flex-wrap flex-col items-center justify-center gap-5 md:gap-10 rounded-2xl col-span-1 md:col-span-6 w-full p-8">
       <article className="flex justify-between items-center w-full px-5">
