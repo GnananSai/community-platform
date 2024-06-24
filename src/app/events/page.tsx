@@ -17,13 +17,23 @@ const page: React.FC = () => {
       eventsCreateRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const [events, setEvents] = React.useState([]);
+  React.useEffect(() => {
+    fetch("/api/event")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setEvents(data.events);
+        }
+      });
+  });
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
       <EventHero scrollToEventCreate={scrollToEventsCreate} />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <EventFeed />
+          <EventFeed events={events} />
         </div>
         <div className="space-y-4">
           <div ref={eventsCreateRef}>

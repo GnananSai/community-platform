@@ -32,8 +32,8 @@ const EventFeed: React.FC<IEventFeed> = ({ events }) => {
         </a>
       </article>
       <article className="flex flex-col gap-5 sm:w-11/12 h-fit justify-center items-center">
-        {events.map((event) => (
-          <EventCard key={event.id} data={event} />
+        {events.map((event, idx) => (
+          <EventCard key={idx} data={event} />
         ))}
       </article>
     </section>

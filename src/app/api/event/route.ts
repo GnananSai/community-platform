@@ -16,3 +16,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error }, { status: 400 });
   }
 }
+
+export async function GET(req: Request) {
+    await dbConnect();
+    try {
+        const events = await Event.find();
+        return NextResponse.json({ success: true, events });
+    } catch (error) {
+      return NextResponse.json({ success: false, error }, { status: 400 });
+    }
+  }

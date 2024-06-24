@@ -13,8 +13,10 @@ const HomePage: React.FC = () => {
     fetch("/api/home")
       .then((res) => res.json())
       .then((data) => {
-        setEvents(data.events);
-        setCommunities(data.communities);
+        if (data.success) {
+          setEvents(data.events);
+          setCommunities(data.communities);
+        }
       });
   }, []);
 

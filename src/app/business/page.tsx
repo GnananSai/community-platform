@@ -18,13 +18,23 @@ const Page: React.FC = () => {
       businessSellRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const [businesses, setBusinesses] = React.useState([]);
+  React.useEffect(() => {
+    fetch("/api/business")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setBusinesses(data.businesses);
+        }
+      });
+  });
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
       <BusinessHero scrollToBusinessSell={scrollToBusinessSell} />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <BusinessFeed />
+          <BusinessFeed businesses={businesses} />
         </div>
         <div className="space-y-4">
           <div ref={businessSellRef}>
