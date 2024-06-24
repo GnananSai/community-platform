@@ -2,9 +2,11 @@
 
 import Login from "@/components/Login";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function loginPage() {
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleLogin = async (email: string, password: string) => {
     fetch("/api/auth/login", {
@@ -18,6 +20,7 @@ export default function loginPage() {
       .then((data) => {
         if (data.success) {
           localStorage.setItem("token", data.token);
+          login(data.token);
           router.replace("/home");
         } else {
           alert(data.message);

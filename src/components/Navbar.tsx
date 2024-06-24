@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navlink from "./Navlink";
+import { useAuth } from "@/context/AuthContext";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
@@ -24,16 +25,11 @@ interface NavbarProps {
   isAuth: boolean;
 }
 
-const Navbar = ({ isAuth }: NavbarProps) => {
+const Navbar: React.FC = () => {
   const [navActive, setNavActive] = useState(false);
   const [activeIdx, setActiveIdx] = useState(-1);
   const router = useRouter();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    router.refresh();
-    router.replace("/");
-  };
+  const { isAuth, logout } = useAuth();
 
   return (
     <header className="w-full">
@@ -65,7 +61,7 @@ const Navbar = ({ isAuth }: NavbarProps) => {
                       onClick={() => {
                         setActiveIdx(5);
                         setNavActive(false);
-                        handleLogout();
+                        logout();
                       }}
                       key={"Logout"}
                       className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
@@ -130,7 +126,7 @@ const Navbar = ({ isAuth }: NavbarProps) => {
                       onClick={() => {
                         setActiveIdx(5);
                         setNavActive(false);
-                        handleLogout();
+                        logout();
                       }}
                       key={"Logout"}
                       className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
@@ -244,7 +240,7 @@ const Navbar = ({ isAuth }: NavbarProps) => {
                 onClick={() => {
                   setActiveIdx(5);
                   setNavActive(false);
-                  handleLogout();
+                  logout();
                 }}
                 key={"Logout"}
                 className="text-white hover:bg-blue-gray-700 px-3 py-2 rounded-md text-base"
