@@ -16,3 +16,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error }, { status: 400 });
   }
 }
+
+export async function GET(req: Request) {
+    await dbConnect();
+    try {
+        const communities = await Community.find();
+        return NextResponse.json({ success: true, communities });
+    } catch (error) {
+      return NextResponse.json({ success: false, error }, { status: 400 });
+    }
+  }

@@ -32,8 +32,8 @@ const CommunityFeed: React.FC<ICommunityFeed> = ({ communities }) => {
         </a>
       </article>
       <article className="flex flex-col gap-5 sm:w-11/12 h-fit justify-center items-center">
-        {communities.map((community) => (
-          <CommunityCard key={community.id} data={community} />
+        {communities.map((community, idx) => (
+          <CommunityCard key={idx} data={community} />
         ))}
       </article>
     </section>
