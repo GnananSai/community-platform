@@ -24,7 +24,9 @@ const page: React.FC = () => {
     fetch("/api/community")
       .then((res) => res.json())
       .then((data) => {
-        setCommunities(data.communities);
+        if (data.success) {
+          setCommunities(data.communities);
+        }
       });
   });
 

@@ -22,7 +22,9 @@ const page: React.FC = () => {
     fetch("/api/event")
       .then((res) => res.json())
       .then((data) => {
-        setEvents(data.events);
+        if (data.success) {
+          setEvents(data.events);
+        }
       });
   });
 
