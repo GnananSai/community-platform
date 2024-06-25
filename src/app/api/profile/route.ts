@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const { id, ...userData } = data;
     const user = await User.findByIdAndUpdate(id, userData, { new: true });
 
-    return NextResponse.json({ success: true, user });
+    return NextResponse.json({ success: true, user: user });
   } catch (error) {
     return NextResponse.json({ success: false, error}, { status: 400 });
   }
@@ -22,7 +22,7 @@ export async function GET(req: Request) {
     const id = url.searchParams.get('id');
     const user = await User.findById(id);
 
-    return NextResponse.json({ success: true, user });
+    return NextResponse.json({ success: true, user: user });
   } catch (error) {
     return NextResponse.json({ success: false, error }, { status: 400 });
   }

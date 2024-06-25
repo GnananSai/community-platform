@@ -3,8 +3,10 @@
 import Login from "@/components/Login";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { useUser } from "@/context/UserContext";
 
 export default function loginPage() {
+  const { setUser } = useUser();
   const router = useRouter();
   const { login } = useAuth();
 
@@ -21,6 +23,8 @@ export default function loginPage() {
         if (data.success) {
           localStorage.setItem("token", data.token);
           login(data.token);
+          setUser(data.user);
+          // console.log(data.user);
           router.replace("/home");
         } else {
           alert(data.message);

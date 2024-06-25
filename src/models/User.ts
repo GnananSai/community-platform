@@ -45,4 +45,6 @@ const UserSchema: Schema = new Schema({
   },
 });
 
+export type UserDocument = IUser & Document;
+
 export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);

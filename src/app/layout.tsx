@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { UserProvider } from "@/context/UserContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-slate-300 overflow-x-hidden">
         <AuthProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <UserProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </UserProvider>
         </AuthProvider>
       </body>
     </html>

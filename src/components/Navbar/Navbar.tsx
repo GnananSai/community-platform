@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Navlink from "./Navlink";
 import { useAuth } from "@/context/AuthContext";
+import { useUser } from "@/context/UserContext";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
@@ -30,6 +31,8 @@ const Navbar: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(-1);
   const router = useRouter();
   const { isAuth, logout } = useAuth();
+  const { user } = useUser();
+  // console.log(user);
 
   return (
     <header className="w-full">
@@ -141,7 +144,11 @@ const Navbar: React.FC = () => {
                       src="profile.webp"
                       alt=""
                       className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
-                      onClick={() => router.push("/profile")}
+                      onClick={() => {
+                        user.completedProfile
+                          ? router.push(`/profile/${user?._id}`)
+                          : router.push(`/profile/${user?._id}/edit`);
+                      }}
                     />
                   </div>
                 ) : (
@@ -168,7 +175,11 @@ const Navbar: React.FC = () => {
                   src="profile.webp"
                   alt=""
                   className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
-                  onClick={() => router.push("/profile")}
+                  onClick={() => {
+                    user.completedProfile
+                      ? router.push(`/profile/${user?._id}`)
+                      : router.push(`/profile/${user?._id}/edit`);
+                  }}
                 />
               ) : (
                 <></>
