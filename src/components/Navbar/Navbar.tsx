@@ -141,6 +141,7 @@ const Navbar: React.FC = () => {
                       src="profile.webp"
                       alt=""
                       className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
+                      onClick={() => router.push("/profile")}
                     />
                   </div>
                 ) : (
@@ -167,6 +168,7 @@ const Navbar: React.FC = () => {
                   src="profile.webp"
                   alt=""
                   className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
+                  onClick={() => router.push("/profile")}
                 />
               ) : (
                 <></>

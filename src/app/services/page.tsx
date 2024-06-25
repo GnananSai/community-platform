@@ -1,9 +1,9 @@
 "use client";
 
-import ServicesCreate from "@/components/ServicesCreate";
-import ServicesFeed from "@/components/ServicesFeed";
-import ServicesHero from "@/components/ServicesHero";
-import ServicesSearch from "@/components/ServicesSearch";
+import ServicesCreate from "@/components/Services/ServicesCreate";
+import ServicesFeed from "@/components/Services/ServicesFeed";
+import ServicesHero from "@/components/Services/ServicesHero";
+import ServicesSearch from "@/components/Services/ServicesSearch";
 import React, { useRef } from "react";
 import { withAuth } from "@/utils/withAuth";
 

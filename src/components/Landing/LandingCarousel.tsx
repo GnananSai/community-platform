@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Slider from "react-slick";
-import Slide from "./Slide";
+import Slide from "../Slide";
 
 const LandingCarousel = () => {
   var settings = {

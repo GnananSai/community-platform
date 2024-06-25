@@ -1,12 +1,14 @@
-import ProfileEdit from '@/components/ProfileEdit'
-import React from 'react'
+"use client";
+import ProfileEdit from "@/components/Profile/ProfileEdit";
+import React from "react";
+import { withAuth } from "@/utils/withAuth";
 
-const page = () => {
+const ProfileEditPage: React.FC = () => {
   return (
     <div>
-      <ProfileEdit/>
+      <ProfileEdit />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default withAuth(ProfileEditPage);

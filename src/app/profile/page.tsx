@@ -1,12 +1,14 @@
-import ProfileContents from '@/components/ProfileContents'
-import React from 'react'
+"use client";
+import ProfileContents from "@/components/Profile/ProfileContents";
+import React from "react";
+import { withAuth } from "@/utils/withAuth";
 
-const page = () => {
+const ProfilePage: React.FC = () => {
   return (
     <div>
-       <ProfileContents/>
+      <ProfileContents />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default withAuth(ProfilePage);
