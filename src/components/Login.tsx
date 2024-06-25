@@ -18,7 +18,7 @@ const Login = ({ onLogin }: LoginProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(login);
+    // console.log(login);
     onLogin(login.email, login.password);
   };
 

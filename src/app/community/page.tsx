@@ -1,9 +1,9 @@
 "use client";
 
-import CommunityCreate from "@/components/CommunityCreate";
-import CommunityFeed from "@/components/CommunityFeed";
-import CommunityHero from "@/components/CommunityHero";
-import CommunitySearch from "@/components/CommunitySearch";
+import CommunityCreate from "@/components/Community/CommunityCreate";
+import CommunityFeed from "@/components/Community/CommunityFeed";
+import CommunityHero from "@/components/Community/CommunityHero";
+import CommunitySearch from "@/components/Community/CommunitySearch";
 import React, { useEffect, useRef } from "react";
 import { withAuth } from "@/utils/withAuth";
 

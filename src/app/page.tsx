@@ -1,8 +1,8 @@
 "use client";
 
-import LandingHero from "@/components/LandingHero";
-import LandingContents from "@/components/LandingContents";
-import LandingCarousel from "@/components/LandingCarousel";
+import LandingHero from "@/components/Landing/LandingHero";
+import LandingContents from "@/components/Landing/LandingContents";
+import LandingCarousel from "@/components/Landing/LandingCarousel";
 
 export default function Home() {
   return (

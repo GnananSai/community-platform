@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import EventFeed from "@/components/EventFeed";
-import CommunityFeed from "@/components/CommunityFeed";
-import HomeHero from "@/components/HomeHero";
+import EventFeed from "@/components/Event/EventFeed";
+import CommunityFeed from "@/components/Community/CommunityFeed";
+import HomeHero from "@/components/Home/HomeHero";
 import { withAuth } from "@/utils/withAuth";
 
 const HomePage: React.FC = () => {
