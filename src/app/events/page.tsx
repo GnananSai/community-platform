@@ -1,9 +1,9 @@
 "use client";
 
-import EventCreate from "@/components/EventCreate";
-import EventFeed from "@/components/EventFeed";
-import EventHero from "@/components/EventHero";
-import EventSearch from "@/components/EventSearch";
+import EventCreate from "@/components/Event/EventCreate";
+import EventFeed from "@/components/Event/EventFeed";
+import EventHero from "@/components/Event/EventHero";
+import EventSearch from "@/components/Event/EventSearch";
 import React, { useRef } from "react";
 import { withAuth } from "@/utils/withAuth";
 const page: React.FC = () => {

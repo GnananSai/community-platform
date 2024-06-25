@@ -1,9 +1,9 @@
 "use client";
 
-import BusinessFeed from "@/components/BusinessFeed";
-import BusinessHero from "@/components/BusinessHero";
-import BusinessSearch from "@/components/BusinessSearch";
-import BusinessSell from "@/components/BusinessSell";
+import BusinessFeed from "@/components/Business/BusinessFeed";
+import BusinessHero from "@/components/Business/BusinessHero";
+import BusinessSearch from "@/components/Business/BusinessSearch";
+import BusinessSell from "@/components/Business/BusinessSell";
 import React, { useRef } from "react";
 import { withAuth } from "@/utils/withAuth";
 

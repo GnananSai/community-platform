@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     const newToken = new Token({ token });
     await newToken.save();
 
-    return NextResponse.json({ success: true, token, userId: user._id });
+    return NextResponse.json({ success: true, token, user: user.toJSON()});
   } catch (error) {
     return NextResponse.json({ success: false, error }, { status: 400 });
   }

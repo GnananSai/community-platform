@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IUser extends Document {
+  username: string;
   email: string;
   password: string;
   completedProfile: boolean;
@@ -20,6 +21,7 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema = new Schema({
+  username: { type: String, unique: true },
   email: { type: String, required: true, unique: true, match: [/.+\@.+\..+/, 'Please provide a valid email address'] },
   password: { type: String, required: true },
   completedProfile: { type: Boolean, default: false },
@@ -42,5 +44,7 @@ const UserSchema: Schema = new Schema({
     },
   },
 });
+
+export type UserDocument = IUser & Document;
 
 export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
