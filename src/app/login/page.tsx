@@ -22,6 +22,7 @@ export default function loginPage() {
       .then((data) => {
         if (data.success) {
           sessionStorage.setItem("token", data.token);
+          sessionStorage.setItem("user", JSON.stringify(data.user));
           login(data.token);
           setUser(data.user);
           // console.log(data.user);

@@ -9,14 +9,9 @@ export interface IUser extends Document {
   dob?: Date;
   age?: number;
   image_url?: string;
-  address?: string;
   city?: string;
   state?: string;
   country?: string;
-  current_location?: {
-    type: string;
-    coordinates: [number, number];
-  };
 }
 
 const UserSchema: Schema = new Schema({
@@ -28,19 +23,9 @@ const UserSchema: Schema = new Schema({
   dob: { type: Date },
   age: { type: Number },
   image_url: { type: String },
-  address: { type: String },
   city: { type: String },
   state: { type: String },
   country: { type: String },
-  current_location: {
-    type: {
-      type: String,
-      enum: ['Point'],
-    },
-    coordinates: {
-      type: [Number],
-    },
-  },
 });
 
 export type UserDocument = IUser & Document;
