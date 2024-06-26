@@ -21,7 +21,7 @@ export default function loginPage() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          localStorage.setItem("token", data.token);
+          sessionStorage.setItem("token", data.token);
           login(data.token);
           setUser(data.user);
           // console.log(data.user);
