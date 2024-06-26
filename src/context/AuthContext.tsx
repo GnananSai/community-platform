@@ -17,18 +17,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     setIsAuth(!!token);
   }, []);
 
   const login = (token: string) => {
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
     setIsAuth(true);
     router.push("/home");
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     setIsAuth(false);
     router.push("/");
   };

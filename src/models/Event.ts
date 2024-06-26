@@ -4,10 +4,7 @@ export interface IEvent extends Document {
     name: string;
     date: Date;
     description: string;
-    location?: {
-        type: string;
-        coordinates: [number, number];
-      };
+    location?: string
     image_url?: string;
     
 }
@@ -16,15 +13,7 @@ const EventSchema: Schema = new Schema({
     name: { type: String, required: true },
     date: { type: Date, required: true },
     description: { type: String, required: true },
-    location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-        },
-        coordinates: {
-            type: [Number],
-        },
-    },
+    location: { type: String, required: true},
     image_url: { type: String },
 });
 

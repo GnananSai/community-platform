@@ -47,7 +47,7 @@ const ProfileContents: React.FC<IProfileContents> = ({ user }) => {
             <div className="col-span-4 sm:col-span-7">
               <div className="bg-white shadow rounded-lg p-6">
                 <h2 className="text-2xl font-bold mb-4 uppercase">About You</h2>
-                <p className="text-gray-800 text-lg">{user?.username}</p>
+                {/* <p className="text-gray-800 text-lg">{user?.username}</p> */}
                 <p className="text-gray-800 text-lg">{user?.email}</p>
                 <p className="text-gray-800 text-lg">{user?.gender}</p>
                 <p className="text-gray-800 text-lg">{dob}</p>

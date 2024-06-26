@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  use,
+} from "react";
 // import { useRouter } from "next/navigation";
 import { IUser } from "@/models/User";
 
@@ -15,6 +21,12 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   //   const router = useRouter();
   const [user, setUser] = useState({} as any);
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
