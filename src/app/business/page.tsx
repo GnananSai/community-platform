@@ -27,7 +27,7 @@ const Page: React.FC = () => {
           setBusinesses(data.businesses);
         }
       });
-  });
+  },[]);
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
