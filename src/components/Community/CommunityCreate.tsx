@@ -1,4 +1,5 @@
 import React from 'react';
+import Upload from '../Upload';
 
 const CommunityCreate = () => {
   return (
@@ -19,6 +20,10 @@ const CommunityCreate = () => {
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Describe the community"
           />
+          <div className='mt-4 flex items-center gap-7 '>
+            <Upload/>
+            <p>Upload images of the community</p>
+          </div>
           <div className="flex justify-center items-center">
             <button className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900">
               Create Community

@@ -26,7 +26,7 @@ const page: React.FC = () => {
           setEvents(data.events);
         }
       });
-  });
+  },[]);
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
