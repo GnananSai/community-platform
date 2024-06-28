@@ -1,10 +1,12 @@
 import { ICommunity } from "@/models/Community";
+import { useRouter } from "next/navigation";
 
 interface CommunityCardProps {
   data: ICommunity;
 }
 
 const CommunityCard = ({ data }: CommunityCardProps) => {
+  const router = useRouter();
   return (
     <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6">
       <article color="blue-gray" className="relative h-56">
@@ -22,7 +24,7 @@ const CommunityCard = ({ data }: CommunityCardProps) => {
         <h2>Members: {data.members ? data.members.length : 0}</h2>
       </article>
       <article className="pt-3">
-        <button className="bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold">
+        <button className="bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold" onClick={()=>{router.push(`/community/${data._id}`)}}>
           View
         </button>
       </article>
