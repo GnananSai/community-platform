@@ -1,11 +1,14 @@
 import { IEvent } from "@/models/Event";
+import { useRouter } from "next/navigation";
 
 interface EventCardProps {
   data: IEvent;
 }
 
 const EventCard = ({ data }: EventCardProps) => {
+  
   const date = new Date(data.date).toLocaleDateString();
+  const router = useRouter();
   return (
     <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6">
       <article color="blue-gray" className="relative h-56">
@@ -23,7 +26,7 @@ const EventCard = ({ data }: EventCardProps) => {
         <h2>{date}</h2>
       </article>
       <article className="pt-3">
-        <button className="bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold">
+        <button className="bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold" onClick={()=>{router.push(`/event/${data._id}`)}}>
           View
         </button>
       </article>
