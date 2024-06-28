@@ -1,4 +1,5 @@
 import React from 'react';
+import Upload from '../Upload';
 
 const BusinessSell = () => {
   return (
@@ -19,12 +20,10 @@ const BusinessSell = () => {
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Enter your asking price"
           />
-          <h1 className="text-lg font-bold text-gray-800 pb-3">Upload an Image/Video</h1>
-          <input
-            className="mb-3 block w-full text-sm text-gray-800 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none"
-            id="file_input"
-            type="file"
-          />
+          <div className='mt-4 flex items-center gap-7 '>
+            <Upload/>
+            <p>Upload images of the item</p>
+          </div>
           <div className="flex justify-center items-center">
             <button className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900">
               List your item
