@@ -55,16 +55,13 @@ const ProfileEdit = () => {
       <h1 className="text-4xl font-bold  text-blue-gray-800 text-center">
         Edit Your Profile
       </h1>
-      <article className="flex flex-col gap-3">
-        <form onSubmit={handleEdit} className="flex flex-col gap-3">
-          <div className="flex flex-col items-center justify-center">
-            <div className="relative group w-32 h-32 mb-4">
+      <article className="flex flex-col gap-3 justify-center items-center">
+            <div className="relative group w-32 h-32 mb-4 ">
               <img
                 src={user.image_url ? user.image_url : "/profile.webp"}
                 className="w-full h-full bg-gray-300 rounded-full object-cover transition duration-300 ease-in-out group-hover:opacity-50 shadow-md shadow-black"
                 alt="Profile Pic"
               />
-              {/* <Upload /> */}
               <CldUploadWidget
                 uploadPreset="ml_default"
                 onSuccess={(result) => {
@@ -94,7 +91,11 @@ const ProfileEdit = () => {
                   </button>
                 )}
               </CldUploadWidget>
+              
             </div>
+        
+        <form onSubmit={handleEdit} className="flex flex-col gap-3">
+          <div className="flex flex-col items-center justify-center">
           </div>
           <table className="w-full">
             <tbody className="space-y-10">
