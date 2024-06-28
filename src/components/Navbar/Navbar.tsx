@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                       />
                     </div> */}
                     <img
-                      src="profile.webp"
+                      src="/profile.webp"
                       alt=""
                       className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
                       onClick={() => {
@@ -172,7 +172,7 @@ const Navbar: React.FC = () => {
             <div className="flex md:hidden gap-5 w-full justify-end">
               {isAuth ? (
                 <img
-                  src="profile.webp"
+                  src="/profile.webp"
                   alt=""
                   className="w-10 h-10 rounded-full border-2 border-black cursor-pointer"
                   onClick={() => {
