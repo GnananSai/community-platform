@@ -2,7 +2,8 @@
 import React from "react";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
-
+import { CldUploadWidget } from "next-cloudinary";
+import Upload from "@/components/Upload";
 const profileInitialValue = {
   name: "",
   gender: "",
@@ -12,10 +13,22 @@ const profileInitialValue = {
   country: "",
   image_url: "",
 };
+
 const ProfileEdit = () => {
   const { user, setUser } = useUser();
   const router = useRouter();
   const [userDetails, setUserDetails] = React.useState(profileInitialValue);
+
+  const handleUpload = (result: any) => {
+    console.log("Upload Result:", result);
+    if (result.event === "success" && result.info && result.info.secure_url) {
+      const url = result.info.secure_url;
+      console.log("Image URL:", url);
+      // setUserDetails({ ...userDetails, image_url: url });
+    } else {
+      console.error("Upload Error:", result.info);
+    }
+  };
 
   const handleEdit = async () => {
     fetch("/api/profile", {
@@ -51,30 +64,36 @@ const ProfileEdit = () => {
                 className="w-full h-full bg-gray-300 rounded-full object-cover transition duration-300 ease-in-out group-hover:opacity-50 shadow-md shadow-black"
                 alt="Profile Pic"
               />
-              <label
-                htmlFor="file_input"
-                title="Change Profile Pic"
-                className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer"
+              {/* <Upload /> */}
+              <CldUploadWidget
+                uploadPreset="ml_default"
+                onSuccess={(result) => {
+                  handleUpload(result);
+                }}
+                onError={(error) => {
+                  console.error("Upload Error:", error);
+                }}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"
-                  ></path>
-                </svg>
-              </label>
-              <input
-                className="hidden"
-                id="file_input"
-                type="file"
-                name="profile_pic"
-              />
+                {({ open }) => (
+                  <button
+                    onClick={() => open()}
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="50"
+                      height="50"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"
+                      ></path>
+                    </svg>
+                  </button>
+                )}
+              </CldUploadWidget>
             </div>
           </div>
           <table className="w-full">
