@@ -21,11 +21,16 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   //   const router = useRouter();
   const [user, setUser] = useState({} as any);
+  const _user = JSON.parse(sessionStorage.getItem("user") || "{}");
   useEffect(() => {
-    const user = sessionStorage.getItem("user");
-    if (user) {
-      setUser(JSON.parse(user));
-    }
+    fetch(`/api/profile/?id=${_user?._id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(async (res) => {
+      const data = await res.json();
+      setUser(data.user);
+    });
   }, []);
 
   return (

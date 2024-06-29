@@ -7,9 +7,9 @@ export async function POST(req: Request) {
 
   try {
     const data = await req.json();
-    console.log(data);
+    // console.log(data);
     const user = await User.findByIdAndUpdate(data.id, {$set: data.userDetails}, { new: true });
-    console.log(user);
+    // console.log(user);
     if (!user) {
       return NextResponse.json({ success: false, error: 'User not found' }, { status: 404 });
     }

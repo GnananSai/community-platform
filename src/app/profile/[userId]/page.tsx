@@ -4,9 +4,10 @@ import React from "react";
 import { useUser } from "@/context/UserContext";
 import { withAuth } from "@/utils/withAuth";
 
-const ProfileEditPage = () => {
+const ProfileContentPage = () => {
   const { user } = useUser();
+  console.log(user);
   return <ProfileContents user={user} />;
 };
 
-export default withAuth(ProfileEditPage);
+export default ProfileContentPage;
