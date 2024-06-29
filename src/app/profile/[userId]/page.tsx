@@ -10,4 +10,4 @@ const ProfileContentPage = () => {
   return <ProfileContents user={user} />;
 };
 
-export default ProfileContentPage;
+export default withAuth(ProfileContentPage);
