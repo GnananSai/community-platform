@@ -6,7 +6,10 @@ import EventHero from "@/components/Event/EventHero";
 import EventSearch from "@/components/Event/EventSearch";
 import React, { useRef } from "react";
 import { withAuth } from "@/utils/withAuth";
+import { useAuth } from "@/context/AuthContext";
 const page: React.FC = () => {
+  const { isAuth } = useAuth();
+  console.warn(isAuth);
   const eventsCreateRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToEventsCreate = (
@@ -26,14 +29,14 @@ const page: React.FC = () => {
           setEvents(data.events);
         }
       });
-  },[]);
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center w-full gap-5">
       <EventHero scrollToEventCreate={scrollToEventsCreate} />
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <EventFeed events={events} />
+          <EventFeed events={events} home={false} />
         </div>
         <div className="space-y-4">
           <div ref={eventsCreateRef}>

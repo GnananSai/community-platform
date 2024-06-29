@@ -21,11 +21,11 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-5">
+    <div className="flex flex-col  items-center w-full gap-5">
       <HomeHero />
-      <div className="grid grid-cols-1 lg:grid-cols-12 w-full">
-        <EventFeed events={events} />
-        <CommunityFeed communities={communities} />
+      <div className="max-w-6xl flex lg:flex-row flex-col gap-5 lg:gap-20">
+        <EventFeed events={events} home={true} />
+        <CommunityFeed communities={communities} home={true} />
       </div>
     </div>
   );

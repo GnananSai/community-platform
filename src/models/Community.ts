@@ -5,6 +5,7 @@ export interface ICommunity extends Document {
     description: string;
     members: [string];
     image_url: string;
+    owner: string;
 }
 
 const CommunitySchema: Schema = new Schema({
@@ -12,6 +13,7 @@ const CommunitySchema: Schema = new Schema({
     description: { type: String, required: true },
     members: { type: [String] },
     image_url: { type: String },
+    owner: { type: String, required: true },
 });
 
 export default mongoose.models.Community || mongoose.model<ICommunity>('Community', CommunitySchema);
