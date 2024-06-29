@@ -1,6 +1,8 @@
 import React from "react";
-
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 const LandingHero = () => {
+  const { isAuth } = useAuth();
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
@@ -13,8 +15,8 @@ const LandingHero = () => {
               There's always something happening in your CommUnity. Discover it
               all here.
             </p>
-            <a
-              href="#"
+            <Link
+              href={isAuth ? "/home" : "/register"}
               className="flex items-center justify-start px-5 py-3 mr-3 text-base font-medium text-center rounded-lg bg-primary-700 hover:bg-primary-800 mb-3 hover:bg-blue-gray-100 w-fit"
             >
               Get started
@@ -30,13 +32,13 @@ const LandingHero = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={isAuth ? "/home" : "/login"}
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-800 border border-gray-800 rounded-lg hover:bg-blue-gray-800 hover:text-white focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
             >
               Join Your CommUnity
-            </a>
+            </Link>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex m-5 transition ease-in-out hover:scale-105">
             <img
