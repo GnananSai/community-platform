@@ -16,7 +16,7 @@ const ServicesCard = ({ data }: ServicesCardProps) => {
       </article>
       <article>
         <h1 className="mb-2 mt-4 font-bold text-blue-gray-800 text-xl">
-          {data.description}
+          {data.name}
         </h1>
       </article>
       <article className="pt-3">
