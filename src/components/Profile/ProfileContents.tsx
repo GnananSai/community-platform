@@ -16,8 +16,8 @@ const ProfileContents: React.FC<IProfileContents> = ({ user }) => {
 
   const dob = new Date(user?.dob || "").toDateString();
   return (
-    <div className="bg-gray-100 min-h-[75vh] p-10 flex justify-between h-full gap-10">
-      <div className="bg-white shadow rounded-lg p-6 h-full w-1/3">
+    <div className="bg-gray-100 min-h-[75vh] p-10 flex flex-col md:flex-row justify-between h-full gap-10">
+      <div className="bg-white shadow rounded-lg p-6 h-full md:w-1/3">
         <div className="flex flex-col items-center">
           <img
             src={user?.image_url || "/profile.webp"}
@@ -32,18 +32,18 @@ const ProfileContents: React.FC<IProfileContents> = ({ user }) => {
         <div className=" flex justify-center items-center">
           <button
             className="bg-blue-gray-800 text-white hover:border hover:border-blue-gray-800 hover:bg-white hover:text-blue-gray-800 p-4 rounded-lg transition ease-in-out hover:scale-105"
-            onClick={() => router.push("/profile/edit")}
+            onClick={() => router.push(`/profile/${user?._id}/edit`)}
           >
             Edit Profile
           </button>
         </div>
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6 h-full w-2/3">
+      <div className="bg-white shadow rounded-lg p-6 h-full md:w-2/3">
         <h2 className="text-2xl font-bold mb-4 uppercase">Your Profile</h2>
         <p className="text-gray-800 text-lg">Name: {user?.name}</p>
         <p className="text-gray-800 text-lg">Email: {user?.email}</p>
-        <p className="text-gray-800 text-lg">Gender{user?.gender}</p>
+        <p className="text-gray-800 text-lg">Gender: {user?.gender}</p>
         <p className="text-gray-800 text-lg">Date of Birth: {dob}</p>
         <p className="text-gray-800 text-lg">City: {user?.city}</p>
         <p className="text-gray-800 text-lg">State: {user?.state}</p>
