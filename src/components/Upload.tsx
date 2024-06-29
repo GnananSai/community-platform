@@ -2,7 +2,11 @@
 import { CldUploadWidget } from "next-cloudinary";
 import { useState } from "react";
 
-const Upload = () => {
+interface UploadProps {
+  onUpload: (url: string) => void;
+}
+
+const Upload: React.FC<UploadProps> = ({ onUpload }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const handleUpload = (result: any) => {
@@ -11,6 +15,7 @@ const Upload = () => {
       const url = result.info.secure_url;
       console.log("Image URL:", url); // Print the URL to the console
       setImageUrl(url); // Store the URL in state
+      onUpload(url); // Call the callback function with the URL
     } else {
       console.error("Upload Error:", result.info);
     }
