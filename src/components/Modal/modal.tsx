@@ -4,9 +4,15 @@ interface ModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   confirmMessage: String;
+  confirmAction: Function;
 }
 
-const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }) => {
+const Modal: React.FC<ModalProps> = ({
+  showModal,
+  setShowModal,
+  confirmMessage,
+  confirmAction,
+}) => {
   return (
     <>
       {showModal ? (
@@ -17,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }
               <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between py-5 px-10 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Confirm Booking</h3>
+                  <h3 className="text-3xl font-semibold">Confirm Action</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -30,7 +36,8 @@ const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 mx-4 text-blueGray-500 text-lg leading-relaxed">
-                        {confirmMessage || "Are you sure you want to continue forward?"}
+                    {confirmMessage ||
+                      "Are you sure you want to continue forward?"}
                   </p>
                 </div>
                 {/*footer*/}
@@ -45,7 +52,10 @@ const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }
                   <button
                     className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {
+                      setShowModal(false);
+                      confirmAction();
+                    }}
                   >
                     Confirm
                   </button>

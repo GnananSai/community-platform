@@ -6,7 +6,7 @@ interface ServicesCardProps {
 
 const ServicesCard = ({ data }: ServicesCardProps) => {
   return (
-    <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6">
+    <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6 transition ease-in-out hover:scale-105">
       <article color="blue-gray" className="relative h-56">
         <img
           src={data.image_url}
@@ -18,11 +18,11 @@ const ServicesCard = ({ data }: ServicesCardProps) => {
         <h1 className="mb-2 mt-4 font-bold text-blue-gray-800 text-xl">
           {data.name}
         </h1>
-      </article>
-      <article className="pt-3">
-        <button className="bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold">
-          View
-        </button>
+        <h2>
+          {data.description.length > 100
+            ? data.description.slice(0, 100) + "..."
+            : data.description}
+        </h2>
       </article>
     </section>
   );

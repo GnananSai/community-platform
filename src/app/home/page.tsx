@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col  items-center w-full gap-5">
       <HomeHero />
-      <div className="max-w-6xl flex lg:flex-row flex-col gap-5 lg:gap-20">
+      <div className="max-w-6xl flex lg:flex-row flex-col gap-5 lg:gap-20 w-fit p-5">
         <EventFeed events={events} home={true} />
         <CommunityFeed communities={communities} home={true} />
       </div>

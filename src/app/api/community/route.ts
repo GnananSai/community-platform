@@ -5,11 +5,11 @@ import Community from '@/models/Community';
 export async function POST(req: Request) {
   await dbConnect();
   try {
-    const {name, description, members, image_url} = await req.json();
+    const {name, description, members, image_url, owner} = await req.json();
     if (!name || !description) {
       return NextResponse.json({ success: false, message: 'Please provide name and description' }, { status: 400 });
     }
-    const newCommunity = new Community({ name, description, members, image_url });
+    const newCommunity = new Community({ name, description, members, image_url, owner });
     const community = await newCommunity.save();
     return NextResponse.json({ success: true, community});
   } catch (error) {
