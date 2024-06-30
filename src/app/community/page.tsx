@@ -35,7 +35,7 @@ const page: React.FC = () => {
       <CommunityHero scrollToCommunityCreate={scrollToCommunityCreate} />
       <div className="max-w-6xl flex lg:flex-row flex-col gap-5 lg:gap-20 w-full p-5 justify-between">
         <CommunityFeed communities={communities} home={false} />
-        <div ref={communityCreateRef} className="flex flex-col gap-2 lg:w-1/2">
+        <div ref={communityCreateRef} className="flex flex-col gap-2 lg:w-full">
           <CommunitySearch />
           <CommunityCreate />
         </div>

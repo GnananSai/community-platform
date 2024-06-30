@@ -13,7 +13,7 @@ const EventFeed: React.FC<IEventFeed> = ({ events, home }) => {
   return (
     <section className="flex flex-wrap flex-col items-center gap-5 md:gap-10 rounded-2xl w-full lg:px-8 lg:mb-10">
       <article className="flex justify-between items-center w-full px-5">
-        <h1 className="text-2xl font-bold md:text-4xl ">Top Events</h1>
+        <h1 className="text-2xl font-bold md:text-2xl ">Top Events</h1>
         {home ? (
           <Link
             href="/events"
