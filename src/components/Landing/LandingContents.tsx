@@ -6,6 +6,7 @@ import { MdConnectWithoutContact, MdOutlineFestival } from "react-icons/md";
 import { TbBusinessplan } from "react-icons/tb";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 const LandingContents = () => {
   useLayoutEffect(() => {
@@ -32,13 +33,13 @@ const LandingContents = () => {
           </p>
           <div className="pt-6 mt-6 space-y-4 border-t border-gray-200">
             <div>
-              <a
-                href="#"
+              <Link
+                href="/register"
                 className="inline-flex items-center text-xl font-medium text-gray-800 gap-2"
               >
                 Sign Up
                 <FaArrowRight />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
