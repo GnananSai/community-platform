@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { IPost } from "@/models/Posts"; // Make sure to update the path as needed
-import { FaThumbsUp } from 'react-icons/fa';
+import { FaThumbsUp } from "react-icons/fa";
 
 interface PostProps {
   post: IPost;
 }
 
 const PostCard: React.FC<PostProps> = ({ post }) => {
-  const initialLikes = post.likes.length; // Ensure initialLikes is correctly typed as number
+  const initialLikes = post.likes ? post.likes.length : 0;
   const [likes, setLikes] = useState<number>(initialLikes);
 
   const handleLike = () => {
-    setLikes(prevLikes => prevLikes + 1); // Update likes count by incrementing
+    setLikes((prevLikes) => prevLikes + 1); // Update likes count by incrementing
     // Here you can add additional logic to handle the like action, like sending a request to the server
   };
 
@@ -37,7 +37,9 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
         >
           <FaThumbsUp className="mr-2" /> Like
         </button>
-        <span className="text-blue-gray-800 font-bold">{likes} {likes === 1 ? 'Like' : 'Likes'}</span>
+        <span className="text-blue-gray-800 font-bold">
+          {likes} {likes === 1 ? "Like" : "Likes"}
+        </span>
       </article>
     </section>
   );

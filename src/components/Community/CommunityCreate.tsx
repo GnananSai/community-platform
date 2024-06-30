@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import "flatpickr/dist/themes/material_green.css";
-import Upload from '../Upload';
+import Upload from "../Upload";
 
 interface FormData {
   name: string;
@@ -17,9 +17,9 @@ interface ApiResponse {
 
 const CommunityCreate: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    description: '',
-    image_url: ''
+    name: "",
+    description: "",
+    image_url: "",
   });
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -43,10 +43,10 @@ const CommunityCreate: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/community', {
-        method: 'POST',
+      const response = await fetch("/api/community", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -55,15 +55,18 @@ const CommunityCreate: React.FC = () => {
       if (result.success) {
         setShowSuccessPopup(true);
         setFormData({
-          name: '',
-          description: '',
-          image_url: ''
+          name: "",
+          description: "",
+          image_url: "",
         });
       } else {
-        console.error('Error creating community:', result.message || result.error);
+        console.error(
+          "Error creating community:",
+          result.message || result.error
+        );
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -83,9 +86,7 @@ const CommunityCreate: React.FC = () => {
             placeholder="Give the name of the community"
             required
           />
-          <h1 className="text-xl font-bold text-gray-800 mb-2">
-            Description
-          </h1>
+          <h1 className="text-xl font-bold text-gray-800 mb-2">Description</h1>
           <input
             type="text"
             name="description"
@@ -95,19 +96,25 @@ const CommunityCreate: React.FC = () => {
             placeholder="Describe the community"
             required
           />
-          <div className='mt-4 flex items-center gap-7 '>
+          <div className="mt-4 flex items-center gap-7 ">
             <Upload onUpload={handleUpload} />
-            <p>Upload images of the community</p>
+            <span className="text-blue-gray-800 font-bold">
+              Upload an Image
+            </span>
           </div>
           {formData.image_url && (
             <div className="mt-4">
-              <img src={formData.image_url} alt="Uploaded" className="max-w-full h-auto" />
+              <img
+                src={formData.image_url}
+                alt="Uploaded"
+                className="max-w-full h-auto border-black border-2 rounded-lg"
+              />
             </div>
           )}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center w-full mt-5">
             <button
               onClick={handleSubmit}
-              className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+              className=" bg-blue-gray-800 text-white p-3 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900 w-full"
             >
               Create Community
             </button>
@@ -117,7 +124,9 @@ const CommunityCreate: React.FC = () => {
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-5 rounded shadow-lg">
-            <p className="text-xl font-bold mb-4">Community Created Successfully!</p>
+            <p className="text-xl font-bold mb-4">
+              Community Created Successfully!
+            </p>
             <button
               onClick={() => setShowSuccessPopup(false)}
               className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
