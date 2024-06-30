@@ -10,6 +10,7 @@ import PostFeed from "@/components/Post/PostFeed";
 import PostCreate from "@/components/Post/CreatePost";
 import { useUser } from "@/context/UserContext";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { IPost } from "@/models/Posts";
 
 const CommunityPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +58,12 @@ const CommunityPage = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            setPosts(data.posts);
+            setPosts(
+              data.posts.sort(
+                (a: IPost, b: IPost) =>
+                  +new Date(b.createdAt) - +new Date(a.createdAt)
+              )
+            );
           }
         });
     }

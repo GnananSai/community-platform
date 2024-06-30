@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IPost } from "@/models/Posts"; // Make sure to update the path as needed
 import { FaThumbsUp } from "react-icons/fa";
 
@@ -9,7 +9,13 @@ interface PostProps {
 const PostCard: React.FC<PostProps> = ({ post }) => {
   const initialLikes = post.likes ? post.likes.length : 0;
   const [likes, setLikes] = useState<number>(initialLikes);
+  const [author, setAuthor] = useState<string>("Unknown Author");
 
+  useEffect(() => {
+    fetch(`/api/profile/?id=${post.userId}`)
+      .then((res) => res.json())
+      .then((data) => setAuthor(data.user.name));
+  }, []);
   const handleLike = () => {
     setLikes((prevLikes) => prevLikes + 1); // Update likes count by incrementing
     // Here you can add additional logic to handle the like action, like sending a request to the server
@@ -27,10 +33,20 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
         </article>
       )}
       <article>
-        <h1 className="mb-2 font-bold text-blue-gray-800 text-xl">
-          {post.title}
-        </h1>
-        <p className="text-blue-gray-600">{post.description}</p>
+        <div className="mb-2 flex justify-between items-center">
+          <h1 className="font-bold text-blue-gray-800 text-2xl">
+            {post.title}
+          </h1>
+          <h1
+            className={`font-bold text-white text-xl p-2 rounded-lg ${
+              post.type === "report" ? `bg-red-300` : `bg-light-green-300`
+            }`}
+          >
+            {post.type === "report" ? "Report" : "Post"}
+          </h1>
+        </div>
+        <h2 className="mb-2  text-blue-gray-800 text-md">Author: {author}</h2>
+        <p className="text-blue-gray-800">{post.description}</p>
       </article>
       <article className="pt-3 flex justify-between items-center">
         <button

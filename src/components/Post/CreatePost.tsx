@@ -24,8 +24,8 @@ const PostCreate: React.FC = () => {
   const { user } = useUser();
   const { id } = useParams();
 
-  const userId = user?._id || "";
-  const communityId = id || "";
+  const userId = user?._id as string;
+  const communityId = id as string;
 
   const [formData, setFormData] = useState<PostData>({
     title: "",
