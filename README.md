@@ -65,6 +65,3 @@ CommUnity is maintained by:
 
 For further information or support, please visit our [GitHub repository](https://github.com/GnananSai/community-platform).
 
----
-
-Feel free to adjust the content as needed to fit your project specifics and style preferences!
