@@ -55,7 +55,7 @@ const BusinessSell = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
-            placeholder="Give a brief descriptio"
+            placeholder="Give a brief description"
             required
           />
           {imageUrl && (

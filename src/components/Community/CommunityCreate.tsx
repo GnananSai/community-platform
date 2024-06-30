@@ -107,7 +107,7 @@ const CommunityCreate: React.FC = () => {
               <img
                 src={formData.image_url}
                 alt="Uploaded"
-                className="max-w-full h-auto border-black border-2 rounded-lg"
+                className="max-w-full h-auto"
               />
             </div>
           )}

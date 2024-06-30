@@ -89,7 +89,9 @@ const ServicesCreate: React.FC = () => {
           />
           <div className="mt-4 flex items-center gap-7 ">
             <Upload onUpload={handleUpload} />
-            <p>Upload images of the service</p>
+            <span className="text-blue-gray-800 font-bold">
+              Upload an Image
+            </span>
           </div>
           {formData.image_url && (
             <div className="mt-4">

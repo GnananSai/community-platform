@@ -9,7 +9,6 @@ export interface IService extends Document {
 const ServiceSchema: Schema = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
-    members: { type: [String] },
     image_url: { type: String },
 });
 

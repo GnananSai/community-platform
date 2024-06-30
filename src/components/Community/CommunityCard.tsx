@@ -20,7 +20,12 @@ const CommunityCard = ({ data }: CommunityCardProps) => {
         <h1 className="mb-2 mt-4 font-bold text-blue-gray-800 text-xl">
           {data.name}
         </h1>
-        <p>{data.description}</p>
+        <p>
+          {" "}
+          {data.description.length > 100
+            ? data.description.slice(0, 100) + "..."
+            : data.description}
+        </p>
         <div className="flex justify-between mt-2">
           <h1>Owner: {data.owner ? data.owner : "Unknown"}</h1>
           <h2>Members: {data.members ? data.members.length : 0}</h2>
