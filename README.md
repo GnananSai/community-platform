@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CommUnity
 
-## Getting Started
+CommUnity is a dynamic web application designed to foster community engagement by connecting local residents, businesses, and organizations. This platform serves as a digital hub where users can share news, organize events, and actively participate in community life.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To run CommUnity locally, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone the repository:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```
+   git clone https://github.com/GnananSai/community-platform.git
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Set up environment variables:
 
-## Learn More
+   - `MONGO_URI`: MongoDB connection string.
+   - `JWT_SECRET`: Secret key for JWT token.
+   - `CLOUDINARY_API_KEY`: API key for Cloudinary (optional for image upload).
 
-To learn more about Next.js, take a look at the following resources:
+3. Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```
+   cd community-platform
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. Start the application:
+   ```
+   npm run dev
+   ```
 
-## Deploy on Vercel
+Alternatively, you can access the live deployment at [CommUnity Live](https://communityplatform.vercel.app/).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Simply set up the required environment variables and start the application. Users can then explore community feeds, events, businesses, services, and manage their profiles with ease.
+
+## Features
+
+- **Community Feed:** View and publish posts or reports, filter by type.
+- **Event Feed:** Discover and create local events, manage bookings.
+- **Business Listings:** Promote businesses and connect with potential customers.
+- **Service Listings:** List specific services offered.
+- **User Profiles:** Create detailed profiles with profile pictures.
+- **Authentication:** Register and log in securely.
+
+## Contributing
+
+We welcome contributions to CommUnity! Please check out our [GitHub repository](https://github.com/GnananSai/community-platform) for details on how to contribute.
+
+## License
+
+This project is licensed under the terms of the [LICENSE](./LICENSE) file present in the root of our repository.
+
+## Credits
+
+CommUnity is maintained by:
+
+- [Amarnath B Bhat](https://github.com/amar-nath-bhat)
+- [Akshay Teja](https://github.com/AkshayTeja)
+- [Pendyala Gnana Sai](https://github.com/GnananSai)
+
+## Contact
+
+For further information or support, please visit our [GitHub repository](https://github.com/GnananSai/community-platform).
+
+---
+
+Feel free to adjust the content as needed to fit your project specifics and style preferences!
