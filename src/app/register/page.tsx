@@ -10,10 +10,11 @@ export default function registerPage() {
     password: string,
     confirmPassword: string
   ) => {
-    // if (password !== confirmPassword) {
-    //   alert("Passwords do not match");
-    //   return;
-    // }
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
     fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -26,10 +27,10 @@ export default function registerPage() {
         if (data.success) {
           router.push("/login");
         } else {
-          alert(data.message);
+          alert(data.message || "Signup failed");
         }
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => alert(err.message || "Something went wrong"));
   };
 
   return <SignUp onSignup={handleSignup} />;
