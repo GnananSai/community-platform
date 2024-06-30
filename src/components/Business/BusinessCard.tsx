@@ -5,7 +5,7 @@ interface BusinessCardProps {
 
 const BusinessCard = ({ data }: BusinessCardProps) => {
   return (
-    <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6">
+    <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6 transition ease-in-out hover:scale-105">
       <article color="blue-gray" className="relative h-56">
         <img
           src={data.image_url || "/BusinessCart.jpg"}
@@ -17,8 +17,11 @@ const BusinessCard = ({ data }: BusinessCardProps) => {
         <h1 className="mt-3 font-bold text-blue-gray-800 text-xl">
           {data.name}
         </h1>
-        <h2 className="font-bold text-blue-gray-800 text-lg">
-          {data.description}
+        <h2 className="">
+          {" "}
+          {data.description.length > 100
+            ? data.description.slice(0, 100) + "..."
+            : data.description}
         </h2>
       </article>
     </section>

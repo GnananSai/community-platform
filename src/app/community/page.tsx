@@ -31,17 +31,13 @@ const page: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-5">
+    <div className="flex flex-col items-center w-full gap-5">
       <CommunityHero scrollToCommunityCreate={scrollToCommunityCreate} />
-      <div className="w-4/5 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <CommunityFeed communities={communities} home={false} />
-        </div>
-        <div className="space-y-4">
-          <div ref={communityCreateRef}>
-            <CommunitySearch />
-            <CommunityCreate />
-          </div>
+      <div className="max-w-6xl flex lg:flex-row flex-col gap-5 lg:gap-20 w-full p-5 justify-between">
+        <CommunityFeed communities={communities} home={false} />
+        <div ref={communityCreateRef} className="flex flex-col gap-2 lg:w-full">
+          <CommunitySearch />
+          <CommunityCreate />
         </div>
       </div>
     </div>

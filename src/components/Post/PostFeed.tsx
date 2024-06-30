@@ -9,10 +9,27 @@ interface ICommunityFeed {
 }
 
 const PostFeed: React.FC<ICommunityFeed> = ({ posts, home }) => {
+  const [type, setType] = React.useState("recent");
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setType(e.target.value);
+  };
   return (
     <section className="flex flex-wrap flex-col items-center gap-5 md:gap-10 rounded-2xl w-full lg:mb-10 lg:px-8">
       <article className="flex justify-between items-center w-full px-5 ">
-        <h1 className="text-2xl font-bold md:text-4xl ">Top Posts</h1>
+        <div className="flex flex-col lg:flex-row justify-between w-full">
+          <h1 className="text-xl font-bold md:text-2xl ">Community Activity</h1>
+          <select
+            name="type"
+            id="type"
+            onChange={(e) => handleChange(e)}
+            defaultValue={"recent"}
+            className="block mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray- bg-white"
+          >
+            <option value="recent">Recent</option>
+            <option value="post">Post</option>
+            <option value="report">Report</option>
+          </select>
+        </div>
         {home ? (
           <Link
             href="/posts"
@@ -37,9 +54,17 @@ const PostFeed: React.FC<ICommunityFeed> = ({ posts, home }) => {
         )}
       </article>
       <article className="flex flex-col gap-5 sm:w-11/12 h-fit justify-center items-center">
-        {posts.map((post, idx) => (
-          <Post key={idx} post={post} />
-        ))}
+        {posts
+          .filter((post) => {
+            if (type === "recent") {
+              return post;
+            } else {
+              return post.type === type;
+            }
+          })
+          .map((post, idx) => (
+            <Post key={idx} post={post} />
+          ))}
       </article>
     </section>
   );
