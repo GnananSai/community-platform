@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 interface SignUpProps {
   onSignup: (email: string, password: string, confirmPassword: string) => void;
 }
@@ -11,13 +12,18 @@ const initialSignupValue = {
 
 const SignUp = ({ onSignup }: SignUpProps) => {
   const [signup, setSignup] = useState(initialSignupValue);
-  // const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSignup({ ...signup, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setSignup({ ...signup, [name]: value });
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(signup);
+    if (signup.password !== signup.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
     onSignup(signup.email, signup.password, signup.confirmPassword);
   };
 
@@ -26,7 +32,7 @@ const SignUp = ({ onSignup }: SignUpProps) => {
       <div className="sm:shadow-xl p-8 bg-white rounded-xl w-96">
         <h1 className="font-semibold text-2xl mb-5">Make An Account</h1>
 
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -40,8 +46,9 @@ const SignUp = ({ onSignup }: SignUpProps) => {
               id="email"
               className="mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full"
               placeholder="name@email.com"
+              value={signup.email}
               onChange={handleChange}
-              required={true}
+              required
             />
           </div>
 
@@ -58,14 +65,15 @@ const SignUp = ({ onSignup }: SignUpProps) => {
               id="password"
               className="mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full"
               placeholder="••••••••"
-              required={true}
+              value={signup.password}
               onChange={handleChange}
+              required
             />
           </div>
 
           <div>
             <label
-              htmlFor="comfirmPassword"
+              htmlFor="confirmPassword"
               className="block mb-2 text-sm font-medium text-gray-800"
             >
               Confirm Password:
@@ -76,36 +84,15 @@ const SignUp = ({ onSignup }: SignUpProps) => {
               id="confirmPassword"
               className="mb-5 p-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-md rounded-lg w-full"
               placeholder="••••••••"
-              required={true}
+              value={signup.confirmPassword}
               onChange={handleChange}
+              required
             />
-          </div>
-
-          <div className="flex justify-between items-center">
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  aria-describedby="remember"
-                  type="checkbox"
-                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3"
-                />
-              </div>
-              <div className="ml-1 text-sm">
-                <label
-                  htmlFor="remember"
-                  className="text-gray-500 dark:text-gray-300"
-                >
-                  Remember me
-                </label>
-              </div>
-            </div>
           </div>
 
           <button
             type="submit"
             className="mt-5 w-full text-white bg-blue-gray-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border hover:bg-white hover:text-gray-800 hover:border-gray-800"
-            onClick={handleSubmit}
           >
             Sign Up
           </button>

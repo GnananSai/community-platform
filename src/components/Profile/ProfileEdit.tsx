@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
@@ -20,17 +20,48 @@ const ProfileEdit = () => {
   const router = useRouter();
   const [userDetails, setUserDetails] = React.useState(profileInitialValue);
 
+  useEffect(() => {
+    // console.log("User:", user);
+    if (user.completedProfile) {
+      setUserDetails({
+        ...profileInitialValue,
+        name: user.name || "",
+        gender: user.gender || "",
+        dob: user.dob ? new Date(user.dob) : new Date(),
+        city: user.city || "",
+        state: user.state || "",
+        country: user.country || "",
+        image_url: user.image_url || "",
+        completedProfile: user.completedProfile,
+      });
+    }
+  }, [user]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserDetails({ ...userDetails, [name]: value });
+    const { name, value, type, checked } = e.target;
+
+    if (type === "radio") {
+      setUserDetails({ ...userDetails, [name]: value });
+    } else if (type === "checkbox") {
+      setUserDetails({ ...userDetails, [name]: checked });
+    } else {
+      setUserDetails({ ...userDetails, [name]: value });
+    }
   };
 
   const handleUpload = (result: any) => {
-    console.log("Upload Result:", result);
-    if (result.event === "success" && result.info && result.info.secure_url) {
+    if (
+      result.event === "success" &&
+      result.info &&
+      result.info.secure_url &&
+      user
+    ) {
       const url = result.info.secure_url;
       console.log("Image URL:", url);
-      setUserDetails({ ...userDetails, image_url: url });
+      setUserDetails((prevUserDetails) => ({
+        ...prevUserDetails,
+        image_url: url,
+      }));
     } else {
       console.error("Upload Error:", result.info);
     }
@@ -124,6 +155,7 @@ const ProfileEdit = () => {
                     onChange={(e) => handleChange(e)}
                     id="name"
                     name="name"
+                    value={userDetails.name}
                     required
                     className="w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
                     placeholder="Enter your name"
@@ -149,6 +181,7 @@ const ProfileEdit = () => {
                         onChange={(e) => handleChange(e)}
                         name="gender"
                         value="male"
+                        checked={userDetails.gender === "male"}
                         className="mr-2"
                       />
                       <span>Male</span>
@@ -159,6 +192,7 @@ const ProfileEdit = () => {
                         name="gender"
                         onChange={(e) => handleChange(e)}
                         value="female"
+                        checked={userDetails.gender === "female"}
                         className="mr-2"
                       />
                       <span>Female</span>
@@ -169,6 +203,7 @@ const ProfileEdit = () => {
                         onChange={(e) => handleChange(e)}
                         name="gender"
                         value="other"
+                        checked={userDetails.gender === "other"}
                         className="mr-2"
                       />
                       <span>Other</span>
@@ -179,6 +214,7 @@ const ProfileEdit = () => {
                         onChange={(e) => handleChange(e)}
                         name="gender"
                         value="not_say"
+                        checked={userDetails.gender === "not_say"}
                         className="mr-2"
                       />
                       <span>Rather Not Say</span>
@@ -186,7 +222,6 @@ const ProfileEdit = () => {
                   </fieldset>
                 </td>
               </tr>
-
               <tr className="">
                 <td className="py-5">
                   <label
@@ -199,7 +234,7 @@ const ProfileEdit = () => {
                 <td className="">
                   <input
                     type="date"
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
                     id="dob"
                     name="dob"
                     className="w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
@@ -223,6 +258,7 @@ const ProfileEdit = () => {
                     id="city"
                     onChange={(e) => handleChange(e)}
                     name="city"
+                    value={userDetails.city}
                     className="w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
                     placeholder="City Name"
                   />
@@ -244,6 +280,7 @@ const ProfileEdit = () => {
                     onChange={(e) => handleChange(e)}
                     id="state"
                     name="state"
+                    value={userDetails.state}
                     className="w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
                     placeholder="State Name"
                   />
@@ -265,6 +302,7 @@ const ProfileEdit = () => {
                     onChange={(e) => handleChange(e)}
                     id="country"
                     name="country"
+                    value={userDetails.country}
                     className="w-full px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
                     placeholder="Country Name"
                   />
