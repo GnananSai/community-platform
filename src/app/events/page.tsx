@@ -38,7 +38,7 @@ const page: React.FC = () => {
         <div>
           <EventFeed events={events} home={false} />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 p-5">
           <div ref={eventsCreateRef}>
             <EventSearch />
             <EventCreate />

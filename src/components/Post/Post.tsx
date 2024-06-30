@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { IPost } from "@/models/Posts"; // Make sure to update the path as needed
 import { FaThumbsUp } from "react-icons/fa";
+import { useUser } from "@/context/UserContext";
 
 interface PostProps {
   post: IPost;
 }
 
 const PostCard: React.FC<PostProps> = ({ post }) => {
-  const initialLikes = post.likes ? post.likes.length : 0;
-  const [likes, setLikes] = useState<number>(initialLikes);
+  const { user } = useUser();
+  const userId = user?._id as string;
+  const [like, setLike] = useState<boolean | undefined>(undefined);
+  const [likes, setLikes] = useState<number>(0);
   const [author, setAuthor] = useState<string>("Unknown Author");
 
   useEffect(() => {
@@ -16,9 +19,26 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
       .then((res) => res.json())
       .then((data) => setAuthor(data.user.name));
   }, []);
+
+  useEffect(() => {
+    if (post.likes && userId) {
+      setLike(post.likes.includes(userId));
+      setLikes(post.likes.length ? post.likes.length : 0);
+    }
+  }, [post.likes, userId]);
+
   const handleLike = () => {
-    setLikes((prevLikes) => prevLikes + 1); // Update likes count by incrementing
-    // Here you can add additional logic to handle the like action, like sending a request to the server
+    fetch(`/api/post/${post._id}`, {
+      method: "PUT",
+      body: JSON.stringify({ userId: userId, like: like }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setLike(!like);
+        }
+      });
+    setLikes(like ? likes - 1 : likes + 1);
   };
 
   return (
@@ -50,14 +70,16 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
       </article>
       <article className="pt-3 flex justify-between items-center">
         <button
-          className="flex items-center bg-blue-gray-800 text-white px-3 py-2 rounded-xl hover:bg-blue-gray-700 font-bold"
+          className={`flex items-center text-white px-3 py-2 rounded-xl  font-bold ${
+            like
+              ? `bg-light-green-300 hover:bg-light-green-700`
+              : `bg-blue-gray-800 hover:bg-blue-gray-700`
+          }`}
           onClick={handleLike}
         >
-          <FaThumbsUp className="mr-2" /> Like
+          <FaThumbsUp className="mr-2" /> {like ? "Liked" : "Like"}
         </button>
-        <span className="text-blue-gray-800 font-bold">
-          {likes} {likes === 1 ? "Like" : "Likes"}
-        </span>
+        <span className="text-blue-gray-800 font-bold">{likes}</span>
       </article>
     </section>
   );
