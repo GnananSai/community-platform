@@ -17,15 +17,17 @@ const PostCard: React.FC<PostProps> = ({ post }) => {
 
   return (
     <section className="w-fit h-fit shadow-blue-gray-800 shadow-lg p-5 rounded-lg mb-3 md:w-full col-span-6">
-      <article color="blue-gray" className="relative h-56">
-        <img
-          src={post.img_url}
-          alt="post-image"
-          className="w-fit h-full sm:w-full sm:h-full rounded-lg object-cover"
-        />
-      </article>
+      {post.img_url && (
+        <article color="blue-gray" className="relative h-56 mb-4">
+          <img
+            src={post.img_url}
+            alt="post-image"
+            className="w-fit h-full sm:w-full sm:h-full rounded-lg object-cover"
+          />
+        </article>
+      )}
       <article>
-        <h1 className="mb-2 mt-4 font-bold text-blue-gray-800 text-xl">
+        <h1 className="mb-2 font-bold text-blue-gray-800 text-xl">
           {post.title}
         </h1>
         <p className="text-blue-gray-600">{post.description}</p>

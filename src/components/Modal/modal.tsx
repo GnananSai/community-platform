@@ -4,9 +4,15 @@ interface ModalProps {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   confirmMessage: String;
+  confirmAction: Function;
 }
 
-const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }) => {
+const Modal: React.FC<ModalProps> = ({
+  showModal,
+  setShowModal,
+  confirmMessage,
+  confirmAction,
+}) => {
   return (
     <>
       {showModal ? (
@@ -30,7 +36,8 @@ const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 mx-4 text-blueGray-500 text-lg leading-relaxed">
-                        {confirmMessage || "Are you sure you want to continue forward?"}
+                    {confirmMessage ||
+                      "Are you sure you want to continue forward?"}
                   </p>
                 </div>
                 {/*footer*/}
@@ -45,7 +52,10 @@ const Modal: React.FC<ModalProps> = ({ showModal, setShowModal, confirmMessage }
                   <button
                     className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {
+                      setShowModal(false);
+                      confirmAction();
+                    }}
                   >
                     Confirm
                   </button>

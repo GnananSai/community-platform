@@ -1,11 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import "flatpickr/dist/themes/material_green.css";
+import React, { useEffect, useState } from "react";
+// import "flatpickr/dist/themes/material_green.css";
 import Upload from "../Upload";
+import { useUser } from "@/context/UserContext";
 
 interface FormData {
   name: string;
   description: string;
   image_url: string;
+  members: string[];
+  owner: string;
 }
 
 interface ApiResponse {
@@ -16,21 +19,29 @@ interface ApiResponse {
 }
 
 const CommunityCreate: React.FC = () => {
+  const { user } = useUser();
+  const userId = user?._id as string;
+  console.log(userId);
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     description: "",
     image_url: "",
+    members: [],
+    owner: "",
   });
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const imageRef = useRef<HTMLInputElement>(null);
-
   useEffect(() => {
-    if (imageRef.current) {
-      // You can add image upload handling here if needed
+    if (userId) {
+      setFormData((prev) => ({
+        ...prev,
+        owner: userId,
+        members: [userId],
+      }));
     }
-  }, []);
+  }, [userId]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,6 +53,7 @@ const CommunityCreate: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const response = await fetch("/api/community", {
         method: "POST",
@@ -58,6 +70,8 @@ const CommunityCreate: React.FC = () => {
           name: "",
           description: "",
           image_url: "",
+          members: [userId],
+          owner: userId,
         });
       } else {
         console.error(

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import Upload from '../Upload';
-
+import React, { useState } from "react";
+import Upload from "../Upload";
+import { useUser } from "@/context/UserContext";
+import { useParams } from "next/navigation";
 interface PostData {
   title: string;
   description: string;
@@ -20,20 +21,28 @@ interface ApiResponse {
 }
 
 const PostCreate: React.FC = () => {
+  const { user } = useUser();
+  const { id } = useParams();
+
+  const userId = user?._id || "";
+  const communityId = id || "";
+
   const [formData, setFormData] = useState<PostData>({
-    title: '',
-    description: '',
-    img_url: '',
-    userId: '',  // You might want to set this to the current user's ID
-    communityId: '', // You might want to set this to the current community's ID
-    type: 'post',
+    title: "",
+    description: "",
+    img_url: "",
+    userId: userId || "",
+    communityId: communityId || "",
+    type: "post",
     createdAt: new Date(),
     likes: [],
   });
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -44,10 +53,10 @@ const PostCreate: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/post', {
-        method: 'POST',
+      const response = await fetch("/api/post", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -56,20 +65,20 @@ const PostCreate: React.FC = () => {
       if (result.success) {
         setShowSuccessPopup(true);
         setFormData({
-          title: '',
-          description: '',
-          img_url: '',
-          userId: '',
-          communityId: '',
-          type: 'post',
+          title: "",
+          description: "",
+          img_url: "",
+          userId: "",
+          communityId: "",
+          type: "post",
           createdAt: new Date(),
           likes: [],
         });
       } else {
-        console.error('Error creating post:', result.message || result.error);
+        console.error("Error creating post:", result.message || result.error);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -84,36 +93,50 @@ const PostCreate: React.FC = () => {
             type="text"
             name="title"
             value={formData.title}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Post Title"
             required
           />
-          <h1 className="text-xl font-bold text-gray-800 mb-2">
-            Description
-          </h1>
+          <h1 className="text-xl font-bold text-gray-800 mb-2">Description</h1>
           <input
             type="text"
             name="description"
             value={formData.description}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Give a short description"
             required
           />
-          <div className='mt-4 flex items-center gap-7 '>
+          <h1 className="text-xl font-bold text-gray-800 mb-2">Type</h1>
+          <select
+            name="type"
+            id="type"
+            onChange={(e) => handleChange(e)}
+            className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray- bg-white"
+          >
+            <option value="post">Post</option>
+            <option value="report">Report</option>
+          </select>
+          <div className="mt-4 flex items-center gap-7 ">
             <Upload onUpload={handleUpload} />
-            <p>Upload images for the post</p>
+            <span className="font-bold text-blue-gray-800">
+              Upload an Image
+            </span>
           </div>
           {formData.img_url && (
             <div className="mt-4">
-              <img src={formData.img_url} alt="Uploaded" className="max-w-full h-auto" />
+              <img
+                src={formData.img_url}
+                alt="Uploaded"
+                className="max-w-full h-auto"
+              />
             </div>
           )}
           <div className="flex justify-center items-center">
             <button
-              onClick={handleSubmit}
-              className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+              onClick={(e) => handleSubmit(e)}
+              className=" bg-blue-gray-800 text-white p-3 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900 w-full mt-5"
             >
               Create Post
             </button>
@@ -126,7 +149,7 @@ const PostCreate: React.FC = () => {
             <p className="text-xl font-bold mb-4">Post Created Successfully!</p>
             <button
               onClick={() => setShowSuccessPopup(false)}
-              className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+              className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900 "
             >
               Close
             </button>
