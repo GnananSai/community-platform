@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="w-full bg-blue-gray-800 p-8 text-white relative bottom-0 left-0 right-0 lg:px-64">
@@ -8,40 +10,40 @@ export function Footer() {
         </div>
         <ul className="flex flex-wrap items-center gap-y-2 md:gap-x-8 justify-center w-full lg:w-fit">
           <li>
-            <a
-              href="#"
+            <Link
+              href="https://github.com/GnananSai/community-platform/blob/main/LICENSE"
               color="blue-gray"
               className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               License
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              href="https://github.com/GnananSai/community-platform"
               color="blue-gray"
               className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               Contribute
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="#"
+            <Link
+              href="https://github.com/GnananSai/community-platform/issues"
               color="blue-gray"
               className="font-normal transition-colors hover:bg-blue-gray-700 px-3 py-2 rounded-md"
             >
               Contact Us
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 lg:flex-row gap-3 lg:justify-between ">
-        <a className="mb-4 text-center font-normal text-white md:mb-0">
+        <p className="mb-4 text-center font-normal text-white md:mb-0">
           &copy; 2024 CommUnity. All Rights Reserved.
-        </a>
+        </p>
         <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
-          <a
+          <Link
             href="#"
             className="opacity-80 transition-opacity hover:opacity-100"
           >
@@ -57,8 +59,8 @@ export function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="opacity-80 transition-opacity hover:opacity-100"
           >
@@ -74,8 +76,8 @@ export function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="opacity-80 transition-opacity hover:opacity-100"
           >
@@ -87,8 +89,8 @@ export function Footer() {
             >
               <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
             </svg>
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             className="opacity-80 transition-opacity hover:opacity-100"
           >
@@ -104,7 +106,7 @@ export function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
