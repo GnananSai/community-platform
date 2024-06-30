@@ -5,12 +5,22 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { ICommunity } from "@/models/Community";
 import Link from "next/link";
+import { join } from "path";
+import PostFeed from "@/components/Post/PostFeed";
+import PostCreate from "@/components/Post/CreatePost";
 
 const CommunityPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [community, setCommunity] = useState<ICommunity>({} as any);
+  const [joined, setJoined] = useState(true);
   const router = useRouter();
   const { id } = useParams();
+
+  const posts=[
+    {
+      
+    }
+  ]
 
   useEffect(() => {
     if (id) {
@@ -63,9 +73,9 @@ const CommunityPage = () => {
             <Link
               href="#"
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center bg-blue-gray-800 text-white border border-gray-800 rounded-lg hover:bg-white hover:text-gray-800 focus:ring-4 focus:ring-gray-100 transition ease-in-out hover:scale-105"
-              onClick={() => setShowModal(true)}
+              onClick={() => {setShowModal(true);setJoined(!joined)}}
             >
-              Join Community
+              {joined? "Leave": "Join Community"}
             </Link>
           </div>
           <Modal
@@ -73,6 +83,17 @@ const CommunityPage = () => {
             setShowModal={setShowModal}
             confirmMessage={"Are you sure you want to join the community?"}
           />
+        </div>
+      </div>
+      <div className="w-4/5 max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <PostFeed posts={posts} home={false} />
+        </div>
+        <div className="space-y-4">
+          <div >
+            {/* <CommunitySearch /> */}
+            <PostCreate />
+          </div>
         </div>
       </div>
     </section>

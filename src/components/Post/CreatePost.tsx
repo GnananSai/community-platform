@@ -1,103 +1,140 @@
-import React, { useState } from "react";
-import { IPost } from "@/models/Posts";
-import { useUser } from "@/context/UserContext";
-import Upload from "../Upload";
-const initialPostValues = {
-  title: "",
-  describtion: "",
-  img_url: "",
-  userId: "",
-  communityId: "",
-  type: "post",
-  createdAt: new Date(),
-  likes: [],
-};
+import React, { useState } from 'react';
+import Upload from '../Upload';
 
-interface CreateProps {
+interface PostData {
+  title: string;
+  description: string;
+  img_url: string;
+  userId: string;
   communityId: string;
+  type: string;
+  createdAt: Date;
+  likes: any[];
 }
 
-const CreatePost: React.FC<CreateProps> = ({ communityId }) => {
-  const { user } = useUser();
-  const [post, setPost] = useState(initialPostValues);
-  const [error, setError] = useState<string | null>(null);
+interface ApiResponse {
+  success: boolean;
+  post?: any;
+  message?: string;
+  error?: string;
+}
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setPost({ ...post, [name]: value });
+const PostCreate: React.FC = () => {
+  const [formData, setFormData] = useState<PostData>({
+    title: '',
+    description: '',
+    img_url: '',
+    userId: '',  // You might want to set this to the current user's ID
+    communityId: '', // You might want to set this to the current community's ID
+    type: 'post',
+    createdAt: new Date(),
+    likes: [],
+  });
+
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    setPost({ ...post, userId: JSON.stringify(user._id) });
-    setPost({ ...post, communityId: communityId });
+  const handleUpload = (url: string) => {
+    setFormData((prev) => ({ ...prev, img_url: url }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const response = await fetch('/api/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result: ApiResponse = await response.json();
+      if (result.success) {
+        setShowSuccessPopup(true);
+        setFormData({
+          title: '',
+          description: '',
+          img_url: '',
+          userId: '',
+          communityId: '',
+          type: 'post',
+          createdAt: new Date(),
+          likes: [],
+        });
+      } else {
+        console.error('Error creating post:', result.message || result.error);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Create a New Post</h2>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="title"
-          >
-            Title
-          </label>
+    <div className="w-full max-w-md mx-auto">
+      <div className="mb-10 flex flex-col bg-white border border-t-4 border-t-blue-gray-800 shadow-xl rounded-xl items-center justify-center p-5">
+        <div className="w-full">
+          <h1 className="text-xl font-bold text-gray-800 mb-3">
+            Create a new post
+          </h1>
           <input
             type="text"
-            id="title"
-            onChange={(e) => handleChange(e)}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            placeholder="Post Title"
+            required
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="description"
-          >
+          <h1 className="text-xl font-bold text-gray-800 mb-2">
             Description
-          </label>
-          <textarea
-            id="description"
+          </h1>
+          <input
+            type="text"
             name="description"
-            onChange={(e) => handleChange(e)}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-            rows={5}
-          ></textarea>
+            value={formData.description}
+            onChange={handleChange}
+            className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
+            placeholder="Give a short description"
+            required
+          />
+          <div className='mt-4 flex items-center gap-7 '>
+            <Upload onUpload={handleUpload} />
+            <p>Upload images for the post</p>
+          </div>
+          {formData.img_url && (
+            <div className="mt-4">
+              <img src={formData.img_url} alt="Uploaded" className="max-w-full h-auto" />
+            </div>
+          )}
+          <div className="flex justify-center items-center">
+            <button
+              onClick={handleSubmit}
+              className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+            >
+              Create Post
+            </button>
+          </div>
         </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="imgUrl"
-          >
-            Image URL
-          </label>
-          <Upload onUpload={(url) => setPost({ ...post, img_url: url })} />
+      </div>
+      {showSuccessPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-5 rounded shadow-lg">
+            <p className="text-xl font-bold mb-4">Post Created Successfully!</p>
+            <button
+              onClick={() => setShowSuccessPopup(false)}
+              className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+            >
+              Close
+            </button>
+          </div>
         </div>
-        <div className="mb-4">
-          <span className="block text-gray-700 text-sm font-bold mb-2">
-            Type
-          </span>
-          <select name="type" id="type" onChange={(e) => handleChange(e)}>
-            <option value="post">Post</option>
-            <option value="report">Report</option>
-          </select>
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700"
-        >
-          Create Post
-        </button>
-      </form>
+      )}
     </div>
   );
 };
 
-export default CreatePost;
+export default PostCreate;
