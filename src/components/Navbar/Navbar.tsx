@@ -8,8 +8,7 @@ import { useUser } from "@/context/UserContext";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "About Us", href: "/about" },
-  { text: "Contact", href: "/contact" },
+  { text: "About Us", href: "https://github.com/GnananSai/community-platform" },
   { text: "Login", href: "/login" },
   { text: "Register", href: "/register" },
 ];
@@ -97,7 +96,7 @@ const Navbar: React.FC = () => {
                   </div>
                 ) : (
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {MENU_LIST.slice(0, 3).map((menu, idx) => (
+                    {MENU_LIST.slice(0, 2).map((menu, idx) => (
                       <div
                         onClick={() => {
                           setActiveIdx(idx);
@@ -153,7 +152,7 @@ const Navbar: React.FC = () => {
                   </div>
                 ) : (
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {MENU_LIST.slice(3, 5).map((menu, idx) => (
+                    {MENU_LIST.slice(2, 4).map((menu, idx) => (
                       <div
                         onClick={() => {
                           setActiveIdx(idx);
