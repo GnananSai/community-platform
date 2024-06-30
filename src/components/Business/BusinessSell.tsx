@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Upload from '../Upload';
+import React, { useState } from "react";
+import Upload from "../Upload";
 
 const BusinessSell = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -12,10 +12,10 @@ const BusinessSell = () => {
 
     const data = { name, description, image_url: imageUrl };
 
-    const response = await fetch('/api/business', {
-      method: 'POST',
+    const response = await fetch("/api/business", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -23,17 +23,20 @@ const BusinessSell = () => {
     const result = await response.json();
     if (result.success) {
       // Handle successful form submission
-      console.log('Business listed successfully:', result.business);
+      console.log("Business listed successfully:", result.business);
       setShowSuccessPopup(true);
     } else {
       // Handle form submission error
-      console.error('Error listing business:', result.message);
+      console.error("Error listing business:", result.message);
     }
   };
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="mb-10 flex flex-col bg-white border border-t-4 border-t-blue-gray-800 shadow-xl rounded-xl items-center justify-center p-5">
+      <form
+        onSubmit={handleSubmit}
+        className="mb-10 flex flex-col bg-white border border-t-4 border-t-blue-gray-800 shadow-xl rounded-xl items-center justify-center p-5"
+      >
         <div className="w-full">
           <h1 className="text-xl font-bold text-gray-800 mb-3">
             Buisiness Name
@@ -57,15 +60,24 @@ const BusinessSell = () => {
           />
           {imageUrl && (
             <div className="mb-3">
-              <img src={imageUrl} alt="Uploaded" className="max-w-full h-auto" />
+              <img
+                src={imageUrl}
+                alt="Uploaded"
+                className="max-w-full h-auto"
+              />
             </div>
           )}
-          <div className='mt-4 flex items-center gap-7 '>
+          <div className="mt-4 flex items-center gap-7 ">
             <Upload onUpload={(url: string) => setImageUrl(url)} />
-            <p>Upload images of the item</p>
+            <span className="text-blue-gray-800 font-bold">
+              Upload an Image
+            </span>
           </div>
-          <div className="flex justify-center items-center">
-            <button type="submit" className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900">
+          <div className="flex justify-center items-center mt-5">
+            <button
+              type="submit"
+              className="bg-blue-gray-800 text-white p-3 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900 w-full"
+            >
               List your item
             </button>
           </div>
@@ -74,7 +86,9 @@ const BusinessSell = () => {
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-5 rounded shadow-lg">
-            <p className="text-xl font-bold mb-4">Business Listed Successfully!</p>
+            <p className="text-xl font-bold mb-4">
+              Business Listed Successfully!
+            </p>
             <button
               onClick={() => setShowSuccessPopup(false)}
               className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"

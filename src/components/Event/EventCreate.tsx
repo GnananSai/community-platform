@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import "flatpickr/dist/themes/material_green.css";
-import flatpickr from 'flatpickr';
-import Upload from '../Upload';
+import flatpickr from "flatpickr";
+import Upload from "../Upload";
 
 interface FormData {
   name: string;
@@ -21,12 +21,12 @@ interface ApiResponse {
 
 const EventCreate: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    description: '',
-    date: '',
-    time: '',
-    location: '',
-    image_url: ''
+    name: "",
+    description: "",
+    date: "",
+    time: "",
+    location: "",
+    image_url: "",
   });
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -38,7 +38,10 @@ const EventCreate: React.FC = () => {
     if (dateRef.current) {
       flatpickr(dateRef.current, {
         onChange: (selectedDates) => {
-          setFormData((prev) => ({ ...prev, date: selectedDates[0].toISOString() }));
+          setFormData((prev) => ({
+            ...prev,
+            date: selectedDates[0].toISOString(),
+          }));
         },
       });
     }
@@ -50,7 +53,10 @@ const EventCreate: React.FC = () => {
         dateFormat: "H:i",
         time_24hr: true,
         onChange: (selectedTimes) => {
-          setFormData((prev) => ({ ...prev, time: selectedTimes[0].toTimeString().substring(0, 5) }));
+          setFormData((prev) => ({
+            ...prev,
+            time: selectedTimes[0].toTimeString().substring(0, 5),
+          }));
         },
       });
     }
@@ -67,10 +73,10 @@ const EventCreate: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/event', {
-        method: 'POST',
+      const response = await fetch("/api/event", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -79,18 +85,18 @@ const EventCreate: React.FC = () => {
       if (result.success) {
         setShowSuccessPopup(true);
         setFormData({
-          name: '',
-          description: '',
-          date: '',
-          time: '',
-          location: '',
-          image_url: ''
+          name: "",
+          description: "",
+          date: "",
+          time: "",
+          location: "",
+          image_url: "",
         });
       } else {
-        console.error('Error creating event:', result.message || result.error);
+        console.error("Error creating event:", result.message || result.error);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -109,9 +115,7 @@ const EventCreate: React.FC = () => {
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Event Name"
           />
-          <h1 className="text-xl font-bold text-gray-800 mb-2">
-            Description
-          </h1>
+          <h1 className="text-xl font-bold text-gray-800 mb-2">Description</h1>
           <input
             type="text"
             name="description"
@@ -127,7 +131,7 @@ const EventCreate: React.FC = () => {
             ref={dateRef}
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Enter the date"
-            value={formData.date.split('T')[0]} // To show the selected date in the input field
+            value={formData.date.split("T")[0]} // To show the selected date in the input field
             onChange={handleChange}
           />
           <h1 className="text-lg font-bold text-gray-800 pb-3">Time?</h1>
@@ -149,17 +153,19 @@ const EventCreate: React.FC = () => {
             className="block w-full mb-3 px-3 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-800"
             placeholder="Enter the location"
           />
-          <div className='mt-4 flex items-center gap-7 '>
+          <div className="mt-4 flex items-center gap-7 ">
             <Upload onUpload={handleUpload} />
-            <p>Upload images of the event</p>
+            <span className="text-blue-gray-800 font-bold">
+              Upload an Image
+            </span>
           </div>
           <div>
             <img src={formData.image_url} alt="" />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-5">
             <button
               onClick={handleSubmit}
-              className="m-3 bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
+              className=" bg-blue-gray-800 text-white p-3 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900 w-full"
             >
               Create your event
             </button>
@@ -169,7 +175,9 @@ const EventCreate: React.FC = () => {
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-5 rounded shadow-lg">
-            <p className="text-xl font-bold mb-4">Event Created Successfully!</p>
+            <p className="text-xl font-bold mb-4">
+              Event Created Successfully!
+            </p>
             <button
               onClick={() => setShowSuccessPopup(false)}
               className="bg-blue-gray-800 text-white px-3 py-2 rounded-md hover:bg-white hover:text-gray-800 hover:border hover:border-blue-gray-800 focus:outline-none focus:ring-gray-900"
